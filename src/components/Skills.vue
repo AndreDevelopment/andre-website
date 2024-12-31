@@ -9,6 +9,6 @@
 <!-- STYLING -->
 <style >
 #skills{
-    background-color: rgb(38, 191, 36);
+    background-color: white
 }
 </style>

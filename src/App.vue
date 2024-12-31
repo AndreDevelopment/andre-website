@@ -5,12 +5,14 @@ import Projects from './components/Projects.vue';
 import Skills from './components/Skills.vue';
 import WorkExp from './components/WorkExperience.vue';
 import Footer from './components/Footer.vue'
+import Education from './components/Education.vue';
 </script>
 
 <template>
   <NavBar />
   <Home/>
   <Projects/>
+  <Education/>
   <Skills/>
   <WorkExp/>
   <Footer/>

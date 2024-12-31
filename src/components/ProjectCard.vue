@@ -13,7 +13,7 @@ const props = defineProps({
 </script>
 <!-- BODY & STRUCTURE -->
 <template>
-  <div class="project-card">
+  <div id="project-card">
     <h1>{{ props.project.name }}</h1>
     <p>{{ props.project.description }}</p>
     <!-- <p>{{props.techStack}}</p>
@@ -24,8 +24,12 @@ const props = defineProps({
 <!-- STYLING -->
 <style>
 #project-card {
+  height: 300px;
+  width: 700px;
   color: black;
-  background-color: gray;
+  border: black 2px solid;
+  border-radius: 2px;
+  background-color: red;
   display: flex;
   flex-direction: row;
   justify-content: center;

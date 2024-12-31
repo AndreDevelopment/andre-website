@@ -2,13 +2,13 @@
 <script setup lang="ts"></script>
 <!-- BODY & STRUCTURE -->
 <template>
-<div class="section" id="work-experience">
-    <h2>Hello this is work experience</h2>
+<div class="section" id="education">
+    <h2>Hello this is my Education</h2>
 </div>
 </template>
 <!-- STYLING -->
 <style >
-#work-experience{
+#education{
     background-color: rgb(38, 191, 36);
 }
 </style>

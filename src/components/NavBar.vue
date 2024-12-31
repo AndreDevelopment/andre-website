@@ -1,14 +1,54 @@
 <!-- SCRIPTING & FUNCTIONS -->
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from "vue";
+import { onMounted, onUnmounted } from "vue";
+
+const navItems = ["Home", "Skills", "Education", "Projects", "Work Experience"];
+const activeSection = ref("home");
+
+onMounted(() => {
+  window.addEventListener("scroll", handleScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", handleScroll);
+});
+
+const convertSectionId = (sectionId: string) => {
+  return sectionId.replace(/\s+/g, "-").toLowerCase();
+};
+const scrollTo = (sectionId: string) => {
+  sectionId = convertSectionId(sectionId);
+  const element = document.getElementById(sectionId);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+};
+
+const handleScroll = () => {
+  const sections = document.querySelectorAll("div.section");
+  sections.forEach((section) => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+      activeSection.value = section.id;
+
+    }
+  });
+};
+
+const isSectionActive = (sectionId: string) => {
+  sectionId = convertSectionId(sectionId);
+  return activeSection.value === sectionId;
+};
+</script>
 <!-- BODY & STRUCTURE -->
 <template>
   <div id="nav-bar-box">
     <ul id="nav-list">
-      <li class="nav-item">Home</li>
-      <li class="nav-item">Skills</li>
-      <li class="nav-item">Education</li>
-      <li class="nav-item">Projects</li>
-      <li class="nav-item">Work Experience</li>
+      
+      <li v-for="n in navItems" :class="['nav-item', {'active': isSectionActive(n)}]" @click="scrollTo(n)" >
+        {{ n }}
+      </li>
     </ul>
   </div>
 </template>
@@ -19,7 +59,7 @@
   top: 0;
   width: 100%;
   height: 5em;
-  background-color:black;
+  background-color: black;
   /* background-color: rgb(34, 34, 34); */
 
   display: flex;
@@ -27,27 +67,25 @@
   z-index: 3;
 }
 #nav-list {
-    color: white;
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    gap: 2em;
-    align-items: center;
-    padding: 2em;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  gap: 2em;
+  align-items: center;
+  padding: 2em;
 }
-.nav-item{
-
+.nav-item {
   height: 2em;
   position: relative;
   display: block;
-  &:hover{
+  &:hover {
     cursor: pointer;
   }
-
 }
 
-.nav-item::after {
-  content: '';
+.nav-item::after{
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -59,10 +97,8 @@
 }
 .nav-item:hover::after,
 .nav-item:focus::after {
-
   opacity: 1;
   transform: translate3d(0, 0.2em, 0);
-  
 }
 
 .nav-item::after {
@@ -72,8 +108,11 @@
 }
 
 .nav-item:hover::after,
-.nav-item:focus::after{
+.nav-item:focus::after {
   transform: scale(1);
- 
+}
+
+.active::after{
+  transform: scale(1);
 }
 </style>

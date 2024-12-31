@@ -14,8 +14,8 @@ export interface ProjectInformation{
     projects: [
         {
           name: "TalkifAI",
-          description: "Constructed a real-time, multilingual web application supporting over 8 languages,"
-            +"utilizing cutting-edge NLP and machine translation to deliver accurate and efficient cross-cultural communication",
+          description: "A real-time, multilingual web application supporting over 8 languages."
+            +" Utilizes cutting-edge NLP and machine translation to deliver accurate and efficient cross-cultural communication",
           imageURL: TalkifAIImg,
           techStack: ["React", "MongoDB", "SignalR"],
           projectURL: "https://talkifai.azurewebsites.net",

@@ -105,7 +105,7 @@ const isSectionActive = (sectionId: string) => {
   left: 0;
   width: 100%;
   height: 0.1em;
-  background-color: rgb(38, 191, 36);
+  background-color: var(--color-accent);
   opacity: 0;
   transition: opacity 300ms, transform 300ms;
 }

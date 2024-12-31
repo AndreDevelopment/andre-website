@@ -3,8 +3,12 @@
 import { ref } from "vue";
 import { onMounted, onUnmounted } from "vue";
 
-const navItems = ["Home", "Skills", "Education", "Projects", "Work Experience"];
+interface CustomScrollIntoViewOptions extends ScrollIntoViewOptions {
+  top?: number; 
+}
+const navItems = ["Home", "Projects", "Education", "Skills", "Work Experience"];
 const activeSection = ref("home");
+const scrollOffset =-80;
 
 onMounted(() => {
   window.addEventListener("scroll", handleScroll);
@@ -18,10 +22,18 @@ const convertSectionId = (sectionId: string) => {
   return sectionId.replace(/\s+/g, "-").toLowerCase();
 };
 const scrollTo = (sectionId: string) => {
+  
   sectionId = convertSectionId(sectionId);
   const element = document.getElementById(sectionId);
+
+  
   if (element) {
-    element.scrollIntoView({ behavior: "smooth" });
+    const y = element.getBoundingClientRect().top + window.scrollY + scrollOffset;
+    window.scrollTo({
+      behavior: "smooth",
+      top:y
+     
+    } as CustomScrollIntoViewOptions );
   }
 };
 
@@ -29,9 +41,8 @@ const handleScroll = () => {
   const sections = document.querySelectorAll("div.section");
   sections.forEach((section) => {
     const rect = section.getBoundingClientRect();
-    if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+    if (rect.top + scrollOffset >= 0 && rect.bottom+ scrollOffset <= window.innerHeight) {
       activeSection.value = section.id;
-
     }
   });
 };
@@ -45,8 +56,11 @@ const isSectionActive = (sectionId: string) => {
 <template>
   <div id="nav-bar-box">
     <ul id="nav-list">
-      
-      <li v-for="n in navItems" :class="['nav-item', {'active': isSectionActive(n)}]" @click="scrollTo(n)" >
+      <li
+        v-for="n in navItems"
+        :class="['nav-item', { active: isSectionActive(n) }]"
+        @click="scrollTo(n)"
+      >
         {{ n }}
       </li>
     </ul>
@@ -84,7 +98,7 @@ const isSectionActive = (sectionId: string) => {
   }
 }
 
-.nav-item::after{
+.nav-item::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -112,7 +126,7 @@ const isSectionActive = (sectionId: string) => {
   transform: scale(1);
 }
 
-.active::after{
+.active::after {
   transform: scale(1);
 }
 </style>

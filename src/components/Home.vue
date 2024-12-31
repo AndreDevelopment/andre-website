@@ -23,8 +23,6 @@ p {
     background-color: black;
     font-size: 2.26rem;
     text-transform: uppercase;
-    /* margin-top: 5em; */
-
     display: flex;
     justify-content: center;
     align-items: center;

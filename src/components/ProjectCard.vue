@@ -16,22 +16,28 @@ const props = defineProps({
   <div id="project-card">
     <h1>{{ props.project.name }}</h1>
     <p>{{ props.project.description }}</p>
-    <!-- <p>{{props.techStack}}</p>
-    <img src={{props.image}}>
-    <a href={{props.imageURL}}>Link</a> -->
+    <p v-for="t in props.project.techStack">{{t}}</p>
+    <img class="project-image" :src="props.project.imageURL">
+    <a :href="props.project.projectURL" target="blank">Link</a>
   </div>
 </template>
 <!-- STYLING -->
 <style>
 #project-card {
-  height: 300px;
-  width: 700px;
+  height: 70%;
+  width: 80%;
   color: black;
   border: black 2px solid;
   border-radius: 2px;
   background-color: red;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
+}
+
+.project-image{
+  height: 100px;
+  width: 100px;
+  box-sizing: border-box;
 }
 </style>

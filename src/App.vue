@@ -52,7 +52,7 @@ import Education from './components/Education.vue';
 
 .section {
   min-height: 100vh;
- 
+  padding-top: 2em;
 }
 
 </style>

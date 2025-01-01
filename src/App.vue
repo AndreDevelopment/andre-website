@@ -27,6 +27,7 @@ import Education from './components/Education.vue';
   --color-light: white;
   --color-dark:black;
   --color-accent:rgb(38, 191, 36);
+  --color-glass:rgba(183, 184, 183, 0.3);
 
   --card-shadow:rgba(0, 0, 0, 0.25) 0 8px 15px;
   --btn-shadow:rgba(0, 0, 0, 0.25) 0 4px 8px;
@@ -64,6 +65,13 @@ import Education from './components/Education.vue';
 .section {
   min-height: 100vh;
   padding-top: 2em;
+}
+
+.title {
+  height: 2em;
+  width: 3.5em;
+  font-weight: 600;
+  font-size: 2.5em;
 }
 
 </style>

@@ -1,7 +1,9 @@
 <!-- SCRIPTING & FUNCTIONS -->
 <script setup lang="ts">
 import type { ProjectInformation } from "../data/dataProjects";
+import { codeIcons } from "../data/dataProjects";
 
+          
 const props = defineProps({
   project: {
     type: Object as () => ProjectInformation,
@@ -11,31 +13,38 @@ const props = defineProps({
     type: Boolean,
     required:true
   },
-  zIndex:{
-    type: Number,
-    required:true
-  }
+
 });
 
+  const getCodeIcon=(icon:string)=>{
 
+    return codeIcons[icon]?codeIcons[icon]:"pi pi-code"
+
+  }
 
 
 </script>
 <!-- BODY & STRUCTURE -->
 <template>
+
+<link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
   <div :class="['project-card',{'show':show}]" >
     <div class="project-stats">
       <h1>{{ props.project.name }}</h1>
       <p class="description">{{ props.project.description }}</p>
       <div class="techstack-box">
-      <p v-for="t in props.project.techStack">{{ t }} &ThinSpace;</p>
+      <i v-for="t in props.project.techStack" :class="getCodeIcon(t.toLocaleLowerCase())" > </i>
     </div>
-      <button class="btn-try" :style="{ zIndex: zIndex}">
-        <a :href="props.project.projectURL"  target="blank">Try it out>></a> 
+      <button class="btn-try" >
+        <a :href="props.project.projectURL"  target="blank">Check it out>></a> 
       </button>
     </div>
-    <img class="project-image" :src="props.project.imageURL" />
+    <div class="project-image" :style="{ backgroundImage: `url(${props.project.imageURL})` }"></div>
+    <!-- <img class="project-image" :src="props.project.imageURL" /> -->
   </div>
+
+
 </template>
 <!-- STYLING -->
 <style>
@@ -45,8 +54,7 @@ const props = defineProps({
   position: absolute;
   top: 0;
   left: 0;
-  padding: 2em;
-  color: white;
+  color: var(--color-light);
   border: transparent 2px solid;
   border-radius: 10px;
   background-color: black;
@@ -54,10 +62,11 @@ const props = defineProps({
   display: flex;
   flex-direction: row;
   opacity: 0;
+  z-index: -1;
 }
 
 .project-stats {
-
+  margin: 2.5em;
   width: 50%;
   height: inherit;
   display: flex;
@@ -78,9 +87,12 @@ h1{
 }
 .techstack-box{
   height: 2em;
+  width: 10em;
+  gap:7px;
   display: flex;
   flex-direction: row;
   color: var(--color-accent);
+  font-size: 1.5em;
 }
 
 a{
@@ -105,16 +117,24 @@ a{
 }
 
 .project-image {
+  background-position: center;
+  background-size:cover;
+  background-repeat: no-repeat;
   border-radius: 10px;
-  object-fit: contain;
   height: 100%;
   width: 50%;
   box-sizing: border-box;
+  box-shadow: inset 15px 1px 40px 22px  var(--color-dark);
 
 }
+
+
+
 
 .show{
   opacity: 1;
+  z-index: 1;
 }
+
 
 </style>

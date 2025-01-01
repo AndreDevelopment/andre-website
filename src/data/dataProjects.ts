@@ -3,6 +3,16 @@ import TalkifAIImg from '../assets/talkifAIScreen.png'
 import secureBank from '../assets/secureBank.png'
 import stockWatch from '../assets/stockWatch.png'
 
+export const codeIcons: Record<string, string> = {
+  'python': 'devicon-python-plain',
+  'java': 'devicon-java-plain',
+  'c#': 'devicon-csharp-plain',
+  'react':'devicon-react-original',
+  'vue':'devicon-vuejs-plain',
+  'mongodb':'devicon-mongodb-plain'
+};
+
+
 export interface ProjectInformation{
   name:string
   description:string
@@ -32,7 +42,7 @@ export interface ProjectInformation{
         },
         {
           name: "StockWatch",
-          description: "Developed a web service application that will monitor user specified stocks and notify them based on real-time information" ,
+          description: "A web service application that will monitor user specified stocks and notify them based on real-time information" ,
           imageURL: stockWatch,
           techStack: ["Python", "React", "MongoDB","Docker"],
           projectURL: "https://stockwatch.cloud",

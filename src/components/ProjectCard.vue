@@ -35,7 +35,8 @@ const props = defineProps({
       <i v-for="t in props.project.techStack" :class="getCodeIcon(t.toLocaleLowerCase())"> </i>
     </div>
       <button class="btn-try" >
-        <a :href="props.project.projectURL"  target="blank">Check it out>></a> 
+        <a :href="props.project.projectURL"  target="blank">Check it out</a>
+        <i class="pi pi-chevron-right try-right"></i>
       </button>
     </div>
     <div class="project-image" :style="{ backgroundImage: `url(${props.project.imageURL})` }"></div>
@@ -93,24 +94,30 @@ h1{
   font-size: 1.5em;
 }
 
-a{
-  color: var(--color-dark);
+a,.try-right{
+  color:var(--color-accent);
   font-weight:400;
   text-decoration: none;
 }
 .btn-try {
   height: 2.5em;
   width: 8em;
-  border: solid 2px var(--color-dark);
+  padding: 1%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:center;
+    gap:2px;
+  border: solid 2px var(--color-accent);
   border-radius: 5px;
-  background-color: var(--color-accent);
+  background-color:transparent;
 
   &:hover {
     box-shadow: var(--card-shadow);
-    background-color: green;
+    transform: scale(1.1);
     cursor: pointer;
+    transition: linear 4s ease-in-out;
   }
-
 
 }
 

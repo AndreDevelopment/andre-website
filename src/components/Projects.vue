@@ -13,20 +13,13 @@ const showProject = (projectIdx: number) => {
 };
 
 const handleLeftClick = () => {
-  if (activeProject.value > 0) {
-    activeProject.value -= 1;
-  } else {
-    activeProject.value = projectData.projects.length - 1;
-  }
+  activeProject.value = (activeProject.value - 1 + projectData.projects.length) % projectData.projects.length;
 };
 
 const handleRightClick = () => {
-  if (activeProject.value < projectData.projects.length - 1) {
-    activeProject.value += 1;
-  } else {
-    activeProject.value = 0;
-  }
+  activeProject.value = (activeProject.value + 1) % projectData.projects.length;
 };
+
 </script>
 <!-- BODY & STRUCTURE -->
 <template>
@@ -100,9 +93,6 @@ const handleRightClick = () => {
   }
 }
 
-.pi-chevron-left,.pi-chevron-right{
- 
-}
 
 #left{
   top: 45%;
@@ -119,6 +109,7 @@ const handleRightClick = () => {
   align-self: flex-start;
   height: 80%;
   width: 90%;
+
 }
 
 .dots-box {

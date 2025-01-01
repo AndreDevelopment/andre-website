@@ -9,6 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/animejs": "^3.1.12",
+    "animejs": "^3.2.2",
+    "floating-vue": "^5.2.2",
     "primeicons": "^7.0.0",
     "vue": "^3.5.13"
   },

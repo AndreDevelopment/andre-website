@@ -3,7 +3,6 @@
 import type { ProjectInformation } from "../data/dataProjects";
 import { codeIcons } from "../data/dataProjects";
 
-          
 const props = defineProps({
   project: {
     type: Object as () => ProjectInformation,
@@ -15,7 +14,6 @@ const props = defineProps({
   },
 
 });
-
   const getCodeIcon=(icon:string)=>{
 
     return codeIcons[icon]?codeIcons[icon]:"pi pi-code"
@@ -34,7 +32,7 @@ const props = defineProps({
       <h1>{{ props.project.name }}</h1>
       <p class="description">{{ props.project.description }}</p>
       <div class="techstack-box">
-      <i v-for="t in props.project.techStack" :class="getCodeIcon(t.toLocaleLowerCase())" > </i>
+      <i v-for="t in props.project.techStack" :class="getCodeIcon(t.toLocaleLowerCase())"> </i>
     </div>
       <button class="btn-try" >
         <a :href="props.project.projectURL"  target="blank">Check it out>></a> 

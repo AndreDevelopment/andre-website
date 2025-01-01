@@ -6,6 +6,52 @@ import Skills from './components/Skills.vue';
 import WorkExp from './components/WorkExperience.vue';
 import Footer from './components/Footer.vue'
 import Education from './components/Education.vue';
+// import anime from 'animejs'; 
+// import { onMounted, onBeforeMount } from 'vue';
+
+// const animations =  [] as anime.AnimeInstance[];
+
+
+//   const  initAnimations = ()=> {
+//       const sections = document.querySelectorAll("div.section");
+//       sections.forEach((section) => {
+//         animations.push(
+//           anime({
+//             targets: section.querySelector('h1')!,
+//             opacity: [0, 1],
+//             translateY: [50, 0],
+//             duration: 800,
+//             easing: 'easeInOutExpo',
+//             begin: () => {},
+//           })
+//         );
+//       });
+//     };
+//     const handleScroll = () => {
+//       const windowHeight = window.innerHeight;
+//       const scrollY = window.scrollY;
+
+//       animations.forEach((animation, index) => {
+//         const section = document.querySelector(`#section${index + 1}`) as HTMLElement;
+//         const sectionTop = section.offsetTop;
+//         const sectionBottom = sectionTop + windowHeight;
+
+//         if (scrollY-80 >= sectionTop - windowHeight / 2 && scrollY-80 <= sectionBottom) {
+//           animation.play(); 
+//         }
+//       });
+//     };
+//     onBeforeMount(() => {
+//       window.removeEventListener('scroll', handleScroll);
+//     });
+
+//     onMounted(() => {
+//       initAnimations();
+//       window.addEventListener('scroll', handleScroll);
+//     });
+
+  
+
 </script>
 
 <template>
@@ -66,7 +112,10 @@ import Education from './components/Education.vue';
   min-height: 100vh;
   padding-top: 2em;
 }
-
+/* .section h1 {
+  opacity: 0;
+  transform: translateY(50px);
+} */
 .title {
   height: 2em;
   width: 3.5em;

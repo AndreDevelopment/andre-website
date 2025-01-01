@@ -26,7 +26,7 @@ export interface ProjectInformation{
     projects: [
         {
           name: "TalkifAI",
-          description: "A real-time, multilingual web application supporting over 8 languages."
+          description: "A real-time, multilingual translator web application supporting over 8 languages."
             +" Utilizes cutting-edge NLP and machine translation to deliver accurate and efficient cross-cultural communication",
           imageURL: TalkifAIImg,
           techStack: ["React", "MongoDB", "SignalR"],

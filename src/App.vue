@@ -27,6 +27,9 @@ import Education from './components/Education.vue';
   --color-light: white;
   --color-dark:black;
   --color-accent:rgb(38, 191, 36);
+
+  --card-shadow:rgba(0, 0, 0, 0.25) 0 8px 15px;
+  --btn-shadow:rgba(0, 0, 0, 0.25) 0 4px 8px;
 }
 
 * {

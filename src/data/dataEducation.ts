@@ -8,6 +8,26 @@ export interface EducationInformation{
     logoURL:string
 
   }
+
+interface Course{
+  name:string
+  icon:string
+  courseURL:string
+
+}
+
+export const courses: Course[] = [
+  {
+    name: "Introduction to Programming",
+    icon: "pi pi-code", 
+    courseURL: "https://example.com/programming101"
+  },
+  {
+    name: "Data Structures and Algorithms", 
+    icon: "pi pi-code",
+    courseURL: "https://example.com/dsa"
+  }
+];
   
 
    export const educationData = reactive({

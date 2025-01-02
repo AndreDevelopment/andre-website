@@ -1,15 +1,19 @@
 <!-- SCRIPTING & FUNCTIONS -->
 <script setup lang="ts">
-import { educationData } from '../data/dataEducation';
-import EducationCard from '../components/EducationCard.vue';
+import { educationData } from '../../data/dataEducation';
+import EducationCard from '../education/EducationCard.vue';
+import Courses from './Courses.vue';
 </script>
 <!-- BODY & STRUCTURE -->
 <template>
 <div class="section" id="education">
     <h1 class="title">Education</h1>
+    <div class="wrapper">
     <div class="education-box">
         <EducationCard v-for="i in educationData.institutions" :instituion="i" />
     </div>
+    <Courses/>
+</div>
 </div>
 </template>
 <!-- STYLING -->
@@ -24,11 +28,21 @@ import EducationCard from '../components/EducationCard.vue';
 }
 
 .education-box{
-    padding-left:4em ;
-    width: 100%;
+   
+ 
+    width: 50%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    align-items: start;
+    
+}
+
+.wrapper{
+
+    width: 100%;
+   
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 </style>

@@ -1,7 +1,7 @@
 <!-- SCRIPTING & FUNCTIONS -->
 <script setup lang="ts">
-import type { ProjectInformation } from "../data/dataProjects";
-import { codeIcons } from "../data/dataProjects";
+import type { ProjectInformation } from "../../data/dataProjects";
+import { codeIcons } from "../../data/dataProjects";
 
 const props = defineProps({
   project: {

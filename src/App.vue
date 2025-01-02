@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import NavBar from './components/NavBar.vue';
 import Home from './components/Home.vue';
-import Projects from './components/Projects.vue';
+import Projects from './components/projects/Projects.vue';
 import Skills from './components/Skills.vue';
 import WorkExp from './components/WorkExperience.vue';
 import Footer from './components/Footer.vue'
-import Education from './components/Education.vue';
+import Education from './components/education/Education.vue';
 // import anime from 'animejs'; 
 // import { onMounted, onBeforeMount } from 'vue';
 
@@ -119,7 +119,7 @@ import Education from './components/Education.vue';
 .title {
   height: 2em;
   width: 3.5em;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 2.5em;
 }
 

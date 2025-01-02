@@ -9,7 +9,10 @@ export const codeIcons: Record<string, string> = {
   'c#': 'devicon-csharp-plain',
   'react':'devicon-react-original',
   'vue':'devicon-vuejs-plain',
-  'mongodb':'devicon-mongodb-plain'
+  'mongodb':'devicon-mongodb-plain',
+  'docker':'devicon-docker-plain',
+  'javascript':'devicon-javascript-plain',
+  '.net':'devicon-dotnetcore-plain'
 };
 
 
@@ -29,7 +32,7 @@ export interface ProjectInformation{
           description: "A real-time, multilingual translator web application supporting over 8 languages."
             +" Utilizes cutting-edge NLP and machine translation to deliver accurate and efficient cross-cultural communication",
           imageURL: TalkifAIImg,
-          techStack: ["React", "MongoDB", "SignalR"],
+          techStack: ["React", "MongoDB", "C#",'.NET'],
           projectURL: "https://talkifai.azurewebsites.net",
         },
         {
@@ -37,7 +40,7 @@ export interface ProjectInformation{
           description: "A comprehensive banking application fortified with 256-bit AES encryption,"
           +"RSA key exchange, and HMAC authentication to safeguard customers information",
           imageURL: secureBank,
-          techStack: ["Java", "JavaFX", "javax.crypto"],
+          techStack: ["Java"],
           projectURL: "https://github.com/AndreDevelopment/network-security-project",
         },
         {

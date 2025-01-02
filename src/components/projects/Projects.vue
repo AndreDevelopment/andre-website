@@ -1,8 +1,8 @@
 <!-- SCRIPTING & FUNCTIONS -->
 <script setup lang="ts">
-import { projectData } from "../data/dataProjects";
-import type { ProjectInformation } from "../data/dataProjects";
-import ProjectCard from "../components/ProjectCard.vue";
+import { projectData } from "../../data/dataProjects";
+import type { ProjectInformation } from "../../data/dataProjects";
+import ProjectCard from "../projects/ProjectCard.vue";
 import "primeicons/primeicons.css";
 import { ref } from "vue";
 
@@ -41,7 +41,7 @@ const handleRightClick = () => {
         <div class="dots-box">
           <span
             :class="['dot', { 'dot-active': showProject(index) }]"
-            v-for="(p, index) in projectData.projects"
+            v-for="(_, index) in projectData.projects"
           ></span>
         </div>
       </div>

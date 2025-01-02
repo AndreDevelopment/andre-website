@@ -66,14 +66,16 @@ import Education from './components/education/Education.vue';
 
 <style>
 /**Zeroing default margin & padding */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Lexend:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 :root{
 
   --color-light: white;
   --color-dark:black;
   --color-accent:rgb(38, 191, 36);
   --color-glass:rgba(183, 184, 183, 0.3);
+  --color-lg:#e8e8e8;
+  --color-dg:rgb(60, 60, 60);
+  --color-mg:rgb(146, 146, 146);
 
   --card-shadow:rgba(0, 0, 0, 0.25) 0 8px 15px;
   --btn-shadow:rgba(0, 0, 0, 0.25) 0 4px 8px;
@@ -83,7 +85,7 @@ import Education from './components/education/Education.vue';
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto", serif;
+  font-family: "Lexend", serif;
   font-weight: 300;
   font-style: normal;
  
@@ -119,8 +121,12 @@ import Education from './components/education/Education.vue';
 .title {
   height: 2em;
   width: 3.5em;
+  color: var(--color-dg);
+  font-size: 3em;
+  font-family: "Lexend", serif;
   font-weight: 400;
-  font-size: 2.5em;
+  font-style: normal;
+
 }
 
 </style>

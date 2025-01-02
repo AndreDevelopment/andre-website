@@ -13,11 +13,11 @@ const showProject = (projectIdx: number) => {
 };
 
 const handleLeftClick = () => {
-  activeProject.value = (activeProject.value - 1 + projectData.projects.length) % projectData.projects.length;
+  activeProject.value = (activeProject.value - 1 + projectData.length) % projectData.length;
 };
 
 const handleRightClick = () => {
-  activeProject.value = (activeProject.value + 1) % projectData.projects.length;
+  activeProject.value = (activeProject.value + 1) % projectData.length;
 };
 
 </script>
@@ -31,7 +31,7 @@ const handleRightClick = () => {
           <i class="pi pi-chevron-left"></i>
         </button>
         <ProjectCard
-          v-for="(p, index) in projectData.projects"
+          v-for="(p, index) in projectData"
           :project="p as unknown as ProjectInformation"
           :show="showProject(index)"
         />
@@ -41,7 +41,7 @@ const handleRightClick = () => {
         <div class="dots-box">
           <span
             :class="['dot', { 'dot-active': showProject(index) }]"
-            v-for="(_, index) in projectData.projects"
+            v-for="(_, index) in projectData"
           ></span>
         </div>
       </div>
@@ -58,7 +58,7 @@ const handleRightClick = () => {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background-color: var(--color-lg);
 }
 
 .carousel {
@@ -123,7 +123,7 @@ const handleRightClick = () => {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 2em;
+  gap: 1.5em;
 }
 
 .dot {

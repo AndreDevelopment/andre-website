@@ -8,42 +8,52 @@ const props = defineProps({
     type: Object as () => ProjectInformation,
     required: true,
   },
-  show:{
+  show: {
     type: Boolean,
-    required:true
+    required: true,
   },
-
 });
-  const getCodeIcon=(icon:string)=>{
-
-    return codeIcons[icon]?codeIcons[icon]:"pi pi-code"
-
-  }
-
-
+const getCodeIcon = (icon: string) => {
+  return codeIcons[icon] ? codeIcons[icon] : "pi pi-code";
+};
 </script>
 <!-- BODY & STRUCTURE -->
 <template>
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+  />
 
-<link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-
-  <div :class="['project-card',{'show':show}]" >
+  <div :class="['project-card', { show: show }]">
     <div class="project-stats">
-      <h1>{{ props.project.name }}</h1>
+      <div class="title-box">
+        <div class="duration-box">
+          <h1>{{ props.project.name }}</h1>
+          <p class="duration">{{props.project.duration}}</p>
+        </div>
+        
+        <div class="techstack-box">
+          <i
+            v-for="t in props.project.techStack"
+            :class="[getCodeIcon(t.toLocaleLowerCase()),'tech-icon']"
+          >
+          </i>
+        </div>
+      </div>
+
       <p class="description">{{ props.project.description }}</p>
-      <div class="techstack-box">
-      <i v-for="t in props.project.techStack" :class="getCodeIcon(t.toLocaleLowerCase())"> </i>
+
+      <a :href="props.project.projectURL" target="blank" class="check-link">
+        <button class="btn-check">Check it out</button>
+      </a>
     </div>
-      <button class="btn-try" >
-        <a :href="props.project.projectURL"  target="blank">Check it out</a>
-        <i class="pi pi-chevron-right try-right"></i>
-      </button>
-    </div>
-    <div class="project-image" :style="{ backgroundImage: `url(${props.project.imageURL})` }"></div>
+    <div
+      class="project-image"
+      :style="{ backgroundImage: `url(${props.project.imageURL})` }"
+    ></div>
     <!-- <img class="project-image" :src="props.project.imageURL" /> -->
   </div>
-
-
 </template>
 <!-- STYLING -->
 <style>
@@ -71,75 +81,117 @@ const props = defineProps({
   display: flex;
   flex-direction: column;
   gap: 1em;
-
 }
 
-h1{
+.tech-icon{
+  height: 100%;
+  font-size: 0.7em;
+}
 
-  height: 2em;
+.duration-box{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
   width: 100%;
 }
 
-.description{
-
-  height: 5em;
+.duration{
+  margin-left: 4px;
+  font-size: 0.6em;
+  color: var(--color-mg);
 }
-.techstack-box{
+
+.title-box{
+  font-size: 1.5em;
+  font-weight: 500;
+
   height: 2em;
-  width: 10em;
-  gap:7px;
+  width: 100%;
   display: flex;
   flex-direction: row;
-  color: var(--color-accent);
-  font-size: 1.5em;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
-a,.try-right{
-  color:var(--color-accent);
-  font-weight:400;
-  text-decoration: none;
+.description {
+  margin-top: 2em;
+  height: 5em;
 }
-.btn-try {
+.techstack-box {
+  padding-top: 4px;
+  
+  height: 100%;
+  max-width:50% ;
+  gap: 7px;
+  display: flex;
+  flex-direction: row;
+
+  color: var(--color-accent);
+  font-size: 1.7em;
+}
+
+
+.check-link {
   height: 2.5em;
   width: 8em;
-  padding: 1%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content:center;
-    gap:2px;
-  border: solid 2px var(--color-accent);
-  border-radius: 5px;
-  background-color:transparent;
+  text-decoration: none;
+}
 
+.btn-check {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  font-size: 0.9em;
+  font-weight: 400;
+
+  color: var(--color-accent);
+  border: solid 2px var(--color-accent);
+  border-radius: 30px;
+  background-color: transparent;
+
+  z-index: 2;
+  overflow: hidden;
   &:hover {
-    box-shadow: var(--card-shadow);
-    transform: scale(1.1);
+    color: var(--color-light);
     cursor: pointer;
-    transition: linear 4s ease-in-out;
   }
 
+  &:hover:after {
+    left: 0;
+    width: 100%;
+    border-radius: 30px;
+    color: var(--color-light);
+  }
+
+  &:after {
+    background-color: var(--color-accent);
+    border-radius: 30px;
+    overflow: hidden;
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    right: 0;
+    z-index: -1;
+
+    transition: all 0.4s ease;
+  }
 }
 
 .project-image {
   background-position: center;
-  background-size:cover;
+  background-size: cover;
   background-repeat: no-repeat;
   border-radius: 10px;
   height: 100%;
   width: 50%;
   box-sizing: border-box;
-  box-shadow: inset 15px 1px 40px 22px  var(--color-dark);
-
+  box-shadow: inset 15px 1px 40px 22px var(--color-dark);
 }
 
-
-
-
-.show{
+.show {
   opacity: 1;
   z-index: 1;
 }
-
-
 </style>

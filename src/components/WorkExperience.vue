@@ -9,7 +9,7 @@
 <!-- STYLING -->
 <style >
 #work-experience{
-    background-color: var(--color-lg);
+    /* background-color: var(--color-lg); */
     justify-content: start;
 }
 </style>

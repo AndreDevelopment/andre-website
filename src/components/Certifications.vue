@@ -9,7 +9,7 @@
 <!-- STYLING -->
 <style >
 #certifications{
-    background-color: var(--color-lg);
+    /* background-color: var(--color-lg); */
     justify-content: start;
 }
 </style>

@@ -52,11 +52,11 @@ const handleRightClick = () => {
 <style>
 
 
-#projects {
+/* #projects {
 
 
   background-color: var(--color-lg);
-}
+} */
 
 .carousel {
 

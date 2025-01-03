@@ -25,7 +25,7 @@ const props = defineProps({
 <style>
 .skill-card {
   padding-top: 2%;
-  background-color: var(--color-dark);
+  background-color: var(--color-dg);
   border-radius: var(--radius-card);
   width: 250px;
   height: 350px;
@@ -33,12 +33,12 @@ const props = defineProps({
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: var(--card-shadow);
+  /* box-shadow: var(--card-shadow); */
 
   &:hover {
     cursor: pointer;
   transform: translateY(-5px); 
-  /* box-shadow: rgba(0, 0, 0, 0.25) 7px 7px 30px 4px;  */
+  box-shadow: var(--color-accent) 1px 1px 10px 3px; 
 }
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
@@ -46,7 +46,8 @@ const props = defineProps({
 .skills-text {
 
   padding-top: 2%;
-  background-color: var(--color-lg);
+  /* background: linear-gradient(to bottom,var(--color-dark),var(--color-dg)); */
+  background-color: var(--color-dg);
   border-bottom-right-radius: var(--radius-card);
   border-bottom-left-radius: var(--radius-card);
   width: 100%;
@@ -72,7 +73,7 @@ const props = defineProps({
   height: 1.5em;
   font-weight: 400;
   font-size: 1.5em;
-  color: var(--color-dark);
+  color: var(--color-light);
 }
 .skill-icon {
   color: var(--color-accent);
@@ -81,6 +82,6 @@ const props = defineProps({
 
 .skill-items {
   font-size: 14px;
-  color: var(--color-dark);
+  color: var(--color-mg);
 }
 </style>

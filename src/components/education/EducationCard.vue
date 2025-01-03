@@ -34,10 +34,17 @@ const props = defineProps({
   border: transparent solid 2px;
   border-radius: 10px;
   color: var(--color-light);
-  background-color: var(--color-dark);
-  box-shadow: var(--card-shadow);
+  background-color: var(--color-dg);
+  /* box-shadow: var(--card-shadow); */
   display: flex;
   flex-direction: column;
+
+  &:hover {
+    cursor: pointer;
+  transform: translateY(-5px) scale(1.1); 
+  
+}
+transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 .edu-stats {
 

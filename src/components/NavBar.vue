@@ -2,12 +2,12 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { onMounted, onUnmounted } from "vue";
-import Contacts from "./Contacts.vue";
+import Contacts from "./ContactList.vue";
 
 interface CustomScrollIntoViewOptions extends ScrollIntoViewOptions {
   top?: number;
 }
-const navItems = ["Home", "Projects", "Education", "Skills", "Work Experience"];
+const navItems = ["Home", "Work Experience",  "Education", "Projects", "Skills","Certifications","Contact" ];
 const activeSection = ref("home");
 const scrollOffset = -80;
 
@@ -77,11 +77,12 @@ const isSectionActive = (sectionId: string) => {
 <style>
 #nav-bar-box {
   position: fixed;
+  z-index: 10;
   top: 0;
   width: 100%;
   height: 5em;
-  background-color: rgba(0, 0, 0, 0.951);
-  /* background-color: rgb(34, 34, 34); */
+  /* background: linear-gradient(to bottom, var(--color-dark), transparent); */
+  background-color: var(--color-dark);
 
   display: flex;
   justify-content: flex-end;
@@ -140,7 +141,7 @@ const isSectionActive = (sectionId: string) => {
 
 
 #right-nav{
-  width: 50%;
+  width: 60%;
   justify-self: flex-start;
  
   display: flex;
@@ -154,7 +155,7 @@ const isSectionActive = (sectionId: string) => {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-width: 50%;
+width: 40%;
 
 }
 </style>

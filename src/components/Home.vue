@@ -26,9 +26,7 @@ p {
     background-color: black;
     font-size: 2.26rem;
     text-transform: uppercase;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
     
 }
 

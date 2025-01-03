@@ -66,9 +66,9 @@ const getCodeIcon = (icon: string) => {
   color: var(--color-light);
   border: transparent 2px solid;
   border-radius: 10px;
-  background-color: black;
-  /* box-shadow: 0 3px 7px rgba(0, 0, 0, 0.5); */
+  background-color: var(--color-dark);
   box-shadow: var(--card-shadow);
+  border: transparent;
   display: flex;
   flex-direction: row;
   opacity: 0;
@@ -181,14 +181,25 @@ const getCodeIcon = (icon: string) => {
 }
 
 .project-image {
-  background-position: center;
-  background-size: cover;
+
+  position: relative;
+  background-position:right;
+  background-size: contain;
   background-repeat: no-repeat;
   border-radius: 10px;
   height: 100%;
   width: 50%;
   box-sizing: border-box;
-  box-shadow: inset 15px 1px 40px 22px var(--color-dark);
+  &::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit; 
+  background: linear-gradient(to right, var(--color-dark), transparent); 
+}
 }
 
 .show {

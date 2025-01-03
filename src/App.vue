@@ -6,6 +6,8 @@ import Skills from './components/skills/Skills.vue';
 import WorkExp from './components/WorkExperience.vue';
 import Footer from './components/Footer.vue'
 import Education from './components/education/Education.vue';
+import Certifications from './components/Certifications.vue';
+import Contact from './components/Contact.vue';
 // import anime from 'animejs'; 
 // import { onMounted, onBeforeMount } from 'vue';
 
@@ -57,10 +59,12 @@ import Education from './components/education/Education.vue';
 <template>
   <NavBar />
   <Home/>
-  <Projects/>
-  <Education/>
-  <Skills/>
   <WorkExp/>
+  <Education/>
+  <Projects/>
+  <Skills/>
+  <Certifications/>
+  <Contact/>
   <Footer/>
 </template>
 
@@ -116,6 +120,11 @@ import Education from './components/education/Education.vue';
 .section {
   min-height: 100vh;
   padding-top: 2em;
+
+   display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 /* .section h1 {
   opacity: 0;
@@ -123,7 +132,7 @@ import Education from './components/education/Education.vue';
 } */
 .title {
   height: 2em;
-  width: 3.5em;
+  width: fit-content;
   color: var(--color-dg);
   font-size: 3em;
   font-family: "Lexend", serif;

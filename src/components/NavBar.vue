@@ -80,7 +80,7 @@ const isSectionActive = (sectionId: string) => {
   top: 0;
   width: 100%;
   height: 5em;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.951);
   /* background-color: rgb(34, 34, 34); */
 
   display: flex;

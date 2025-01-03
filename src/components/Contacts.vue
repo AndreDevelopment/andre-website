@@ -13,7 +13,7 @@
       <button class="btn-contact" id="email">
         <i class="icon-contact pi pi-envelope"></i></button
     ></a>
-    <a href="www.linkedin.com/in/andre-j-d-souza" target="_blank" class="link-contact"
+    <a href="https://www.linkedin.com/in/andre-j-d-souza" target="_blank" class="link-contact"
       ><button class="btn-contact" id="linked-id">
         <i class="icon-contact devicon-linkedin-plain"></i></button
     ></a>

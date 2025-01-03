@@ -14,17 +14,14 @@ const props = defineProps({
 <div class="institutions">
   <div id="education-card">
     <div class="edu-stats">
-      <h2 class="degree"><i class="pi pi-graduation-cap"></i> &ThickSpace; {{ props.instituion.degreeType }}</h2>
+      <h2 class="degree">{{ props.instituion.degreeType }}</h2>
+      <h4 class="school">{{ props.instituion.institution }}</h4>
       <h3 class="field">{{ props.instituion.fieldName }}</h3>
-      <h4 class="institution">{{ props.instituion.institution }}</h4>
-      <p class="duration">{{ props.instituion.duration }}</p>
+    
     </div>
-    <!-- <img :src="props.instituion.logoURL" alt="No Image" class="logo"> -->
+   
   </div>
-  <div class="ellipses-box">
-        <span class="elli"></span><span class="elli"></span
-            ><span class="elli"></span>
-     </div>
+  
     </div>
 </template>
 <!-- STYLING -->
@@ -32,12 +29,12 @@ const props = defineProps({
 #education-card {
     
   padding: 1em;
-  height: 200px;
-  width: 500px;
+  height: 80%;
+  width: 325px;
   border: transparent solid 2px;
   border-radius: 10px;
-  color: var(--color-dark);
-  background-color: var(--color-light);
+  color: var(--color-light);
+  background-color: var(--color-dark);
   box-shadow: var(--card-shadow);
   display: flex;
   flex-direction: column;
@@ -54,23 +51,24 @@ const props = defineProps({
   object-fit: contain;
 }
 
-.elli{
 
-    background-color: rgba(94, 94, 94, 0.444);
-    height: 10px;
-    width: 10px;
-    border-radius: 50%;
+.degree{
+  text-wrap: wrap;
+font-size: 1.5em;
+font-weight: 500;
+
 }
 
-.ellipses-box{
-    
-    height: 50px;
-    width: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.field{
+  font-size: 0.9em;
+  font-weight: 300;
 }
 
+.school{
+
+  font-size: 0.8em;
+  color: var(--color-mg);
+}
 .institutions{
    
 height: 100%;

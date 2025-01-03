@@ -50,8 +50,8 @@ p {
 }
 
 .me-item div{
-    background-color:white;
-  color: black;
+    background-color:var(--color-light);
+    color: var(--color-dark);
 }
 
 

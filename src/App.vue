@@ -74,10 +74,11 @@ import Education from './components/education/Education.vue';
   --color-accent:rgb(38, 191, 36);
   --color-glass:rgba(183, 184, 183, 0.3);
   --color-lg:#e8e8e8;
-  --color-dg:rgb(60, 60, 60);
+  --color-dg:rgb(61, 61, 61);
   --color-mg:rgb(146, 146, 146);
 
   --card-shadow:rgba(0, 0, 0, 0.25) 7px 7px 19px 4px;
+  /* --card-shadow:var(--color-accent) 2px 2px 19px 4px; */
   --btn-shadow:rgba(0, 0, 0, 0.25) 0 4px 8px;
 
   --radius-card: 10px;
@@ -126,7 +127,7 @@ import Education from './components/education/Education.vue';
   color: var(--color-dg);
   font-size: 3em;
   font-family: "Lexend", serif;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
 
 }

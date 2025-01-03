@@ -67,7 +67,8 @@ const getCodeIcon = (icon: string) => {
   border: transparent 2px solid;
   border-radius: 10px;
   background-color: black;
-  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.5);
+  /* box-shadow: 0 3px 7px rgba(0, 0, 0, 0.5); */
+  box-shadow: var(--card-shadow);
   display: flex;
   flex-direction: row;
   opacity: 0;
@@ -91,7 +92,7 @@ const getCodeIcon = (icon: string) => {
 .duration-box{
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 8px;
   width: 100%;
 }
 

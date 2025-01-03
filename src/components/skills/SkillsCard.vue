@@ -28,7 +28,7 @@ const props = defineProps({
   background-color: var(--color-dark);
   border-radius: var(--radius-card);
   width: 250px;
-  height: 300px;
+  height: 350px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -44,48 +44,33 @@ const props = defineProps({
 }
 
 .skills-text {
-  padding: 1%;
+
+  padding-top: 2%;
   background-color: var(--color-lg);
   border-bottom-right-radius: var(--radius-card);
   border-bottom-left-radius: var(--radius-card);
   width: 100%;
-  height: 200px;
+
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
 .skills-list {
+ 
   padding: 1em;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Adjust minmax values as needed */
-  grid-auto-rows: minmax(20px, auto);
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+ 
   align-items: center;
   width: 100%;
-  height: 120px; 
-  /* overflow-y: auto;  */
+  height: 200px; 
 
-  /* &::-webkit-scrollbar {
-  width: 8px; 
-}
-
-&::-webkit-scrollbar-track {
-  background: transparent; 
-}
-
-&::-webkit-scrollbar-thumb {
-  background: var(--color-mg); 
-  border-radius: 10px; 
-}
-
-&::-webkit-scrollbar-thumb:hover {
-  background: var(--color-dg); 
-} */
 }
 .skill-title {
-  font-weight: 500;
+  height: 1.5em;
+  font-weight: 400;
   font-size: 1.5em;
   color: var(--color-dark);
 }

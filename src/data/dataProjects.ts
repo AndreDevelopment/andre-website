@@ -1,4 +1,4 @@
-import { reactive } from "vue";
+
 import TalkifAIImg from '../assets/talkifAIScreen.png'
 import secureBank from '../assets/secureBank.png'
 import stockWatch from '../assets/stockWatch.png'
@@ -43,7 +43,7 @@ export const projectData:ProjectInformation[] =[
     name: "Secure Banking System",
     duration:"April 2024",
     description: "A comprehensive banking application fortified with 256-bit AES encryption,"
-    +"RSA key exchange, and HMAC authentication to safeguard customers information",
+    +" RSA key exchange, and HMAC authentication to safeguard customers information",
     imageURL: secureBank,
     techStack: ["Java","Intellij","git"],
     projectURL: "https://github.com/AndreDevelopment/network-security-project",

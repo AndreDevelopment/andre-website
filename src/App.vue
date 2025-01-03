@@ -2,7 +2,7 @@
 import NavBar from './components/NavBar.vue';
 import Home from './components/Home.vue';
 import Projects from './components/projects/Projects.vue';
-import Skills from './components/Skills.vue';
+import Skills from './components/skills/Skills.vue';
 import WorkExp from './components/WorkExperience.vue';
 import Footer from './components/Footer.vue'
 import Education from './components/education/Education.vue';
@@ -77,8 +77,10 @@ import Education from './components/education/Education.vue';
   --color-dg:rgb(60, 60, 60);
   --color-mg:rgb(146, 146, 146);
 
-  --card-shadow:rgba(0, 0, 0, 0.25) 0 8px 15px;
+  --card-shadow:rgba(0, 0, 0, 0.25) 7px 7px 19px 4px;
   --btn-shadow:rgba(0, 0, 0, 0.25) 0 4px 8px;
+
+  --radius-card: 10px;
 }
 
 * {

@@ -12,7 +12,11 @@ export const codeIcons: Record<string, string> = {
   'mongodb':'devicon-mongodb-plain',
   'docker':'devicon-docker-plain',
   'javascript':'devicon-javascript-plain',
-  '.net':'devicon-dotnetcore-plain'
+  '.net':'devicon-dotnetcore-plain',
+  'git':'devicon-git-plain',
+  'github':'devicon-github-original',
+  'vscode':"devicon-vscode-plain",
+  'intellij':'devicon-intellij-plain'
 };
 
 
@@ -41,7 +45,7 @@ export const projectData:ProjectInformation[] =[
     description: "A comprehensive banking application fortified with 256-bit AES encryption,"
     +"RSA key exchange, and HMAC authentication to safeguard customers information",
     imageURL: secureBank,
-    techStack: ["Java"],
+    techStack: ["Java","Intellij","git"],
     projectURL: "https://github.com/AndreDevelopment/network-security-project",
   },
   {

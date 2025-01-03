@@ -97,12 +97,12 @@ const getCodeIcon = (icon: string) => {
 
 .duration{
   margin-left: 4px;
-  font-size: 0.6em;
+  font-size: 0.8em;
   color: var(--color-mg);
 }
 
 .title-box{
-  font-size: 1.5em;
+  font-size: 1.2em;
   font-weight: 500;
 
   height: 2em;
@@ -127,7 +127,7 @@ const getCodeIcon = (icon: string) => {
   flex-direction: row;
 
   color: var(--color-accent);
-  font-size: 1.7em;
+  font-size: 2em;
 }
 
 

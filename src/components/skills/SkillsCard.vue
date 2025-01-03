@@ -34,6 +34,13 @@ const props = defineProps({
   justify-content: center;
   align-items: center;
   box-shadow: var(--card-shadow);
+
+  &:hover {
+    cursor: pointer;
+  transform: translateY(-5px); 
+  /* box-shadow: rgba(0, 0, 0, 0.25) 7px 7px 30px 4px;  */
+}
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .skills-text {

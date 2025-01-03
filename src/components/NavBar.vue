@@ -2,13 +2,14 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { onMounted, onUnmounted } from "vue";
+import Contacts from "./Contacts.vue";
 
 interface CustomScrollIntoViewOptions extends ScrollIntoViewOptions {
-  top?: number; 
+  top?: number;
 }
 const navItems = ["Home", "Projects", "Education", "Skills", "Work Experience"];
 const activeSection = ref("home");
-const scrollOffset =-80;
+const scrollOffset = -80;
 
 onMounted(() => {
   window.addEventListener("scroll", handleScroll);
@@ -22,18 +23,16 @@ const convertSectionId = (sectionId: string) => {
   return sectionId.replace(/\s+/g, "-").toLowerCase();
 };
 const scrollTo = (sectionId: string) => {
-  
   sectionId = convertSectionId(sectionId);
   const element = document.getElementById(sectionId);
 
-  
   if (element) {
-    const y = element.getBoundingClientRect().top + window.scrollY + scrollOffset;
+    const y =
+      element.getBoundingClientRect().top + window.scrollY + scrollOffset;
     window.scrollTo({
       behavior: "smooth",
-      top:y
-     
-    } as CustomScrollIntoViewOptions );
+      top: y,
+    } as CustomScrollIntoViewOptions);
   }
 };
 
@@ -41,7 +40,10 @@ const handleScroll = () => {
   const sections = document.querySelectorAll("div.section");
   sections.forEach((section) => {
     const rect = section.getBoundingClientRect();
-    if (rect.top + scrollOffset >= 0 && rect.bottom+ scrollOffset <= window.innerHeight) {
+    if (
+      rect.top + scrollOffset >= 0 &&
+      rect.bottom + scrollOffset <= window.innerHeight
+    ) {
       activeSection.value = section.id;
     }
   });
@@ -55,15 +57,20 @@ const isSectionActive = (sectionId: string) => {
 <!-- BODY & STRUCTURE -->
 <template>
   <div id="nav-bar-box">
-    <ul id="nav-list">
-      <li
-        v-for="n in navItems"
-        :class="['nav-item', { active: isSectionActive(n) }]"
-        @click="scrollTo(n)"
-      >
-        {{ n }}
-      </li>
-    </ul>
+    <div class="nav-zones" id="left-nav">
+      <Contacts/>
+    </div>
+    <div class="nav-zones" id="right-nav">
+      <ul id="nav-list">
+        <li
+          v-for="n in navItems"
+          :class="['nav-item', { active: isSectionActive(n) }]"
+          @click="scrollTo(n)"
+        >
+          {{ n }}
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 <!-- STYLING -->
@@ -128,5 +135,26 @@ const isSectionActive = (sectionId: string) => {
 
 .active::after {
   transform: scale(1);
+}
+
+
+
+#right-nav{
+  width: 50%;
+  justify-self: flex-start;
+ 
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+#left-nav{
+  padding-left: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+width: 50%;
+
 }
 </style>

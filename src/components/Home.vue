@@ -1,9 +1,28 @@
 <!-- SCRIPTING & FUNCTIONS -->
-<script setup lang="ts"></script>
+<script setup lang="ts">
+interface CustomScrollIntoViewOptions extends ScrollIntoViewOptions {
+  top?: number;
+}
+const scrollNextSection = () =>{
+
+  const element = document.getElementById('work-experience');
+
+  if (element) {
+    const y =
+      element.getBoundingClientRect().top + window.scrollY + -80;
+    window.scrollTo({
+      behavior: "smooth",
+      top: y,
+    } as CustomScrollIntoViewOptions);
+  }
+}
+
+</script>
 <!-- BODY & STRUCTURE -->
 <template>
 <div class="section" id="home">
   <div class="main"></div>
+  <div class="intro-box">
     <p>Hello I'm</p>
     <section class="animation">
         <div class="me-item "><div>Andre D'Souza</div></div>
@@ -11,6 +30,9 @@
         <div class="me-item"><div>A Web Developer</div></div>
         
     </section>
+  </div>
+
+    <button id="btn-next" @click="scrollNextSection()"><i class="pi pi-angle-double-down"></i></button>
   </div>
 
 </template>
@@ -26,7 +48,10 @@ p {
     background-color: black;
     font-size: 2.26rem;
     text-transform: uppercase;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
     
 }
 
@@ -51,8 +76,46 @@ p {
     background-color:var(--color-light);
     color: var(--color-dark);
 }
+.intro-box{
+  margin-top: auto;
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+  width: fit-content;
+}
+#btn-next{
+  position: relative;
+  --btn-next-sz:40px;
+  font-size: 0.7em;
+  color: var(--color-accent);
+  height: var(--btn-next-sz);
+  width:  var(--btn-next-sz);
+  margin-top: auto; 
+  background-color: transparent;
+  border: none;
+  animation: smoothBounce 2s infinite;
+  &:hover{
+    cursor: pointer;
+  }
+}
 
-
+@keyframes smoothBounce {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 
 @keyframes text-animation {
    0% {margin-top: 0rem; }
@@ -67,8 +130,7 @@ p {
 }
 
 .main {
-    /* height: 100%;
-    overflow: hidden; */
+
     position:absolute;
     top: 50%;
     left: 50%;

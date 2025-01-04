@@ -38,7 +38,7 @@ const props = defineProps({
     height: var(--year-sz);
     font-size: var(--year-sz);
     font-weight: 500;
-    
+    color: var(--color-mg);
 }
 .edu-box,.year-box{
     height: 100%;
@@ -114,6 +114,6 @@ const props = defineProps({
   width: 1px;
   height: 100%; 
   background-color: transparent;
-  border-right: 4px dashed var(--color-light); 
+  border-right: 4px dashed var(--color-mg); 
 }
 </style>

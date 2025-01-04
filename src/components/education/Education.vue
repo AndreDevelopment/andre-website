@@ -24,12 +24,8 @@ import Timeline from './Timeline.vue';
 <style >
 #education{
     color: var(--color-white);
-    background-color: var(--color-lg);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    
+    /* background-color: var(--color-lg); */
+
 }
 
 .courses-box{

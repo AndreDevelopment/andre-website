@@ -15,7 +15,7 @@ import SkillsCard from './SkillsCard.vue';
 <!-- STYLING -->
 <style >
 #skills{
-    background-color: var(--color-lg);
+    /* background-color: var(--color-lg); */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

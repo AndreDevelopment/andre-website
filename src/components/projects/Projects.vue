@@ -58,11 +58,11 @@ const handleSelectSlide = (projectIdx: number) => {
 <style>
 
 
-#projects {
+/* #projects {
 
   gap: 10px;
   background-color: var(--color-lg);
-}
+} */
 
 .carousel {
 

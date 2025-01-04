@@ -35,6 +35,7 @@ const handleSelectSlide = (projectIdx: number) => {
         <button class="btn-caro" id="left" @click="handleLeftClick()">
           <i class="pi pi-chevron-left"></i>
         </button>
+
         <ProjectCard
           v-for="(p, index) in projectData"
           :project="p as unknown as ProjectInformation"

@@ -1,6 +1,6 @@
 <!-- SCRIPTING & FUNCTIONS -->
 <script setup lang="ts">
-import type { WorkInformation } from "../data/dataWorkExperience";
+import type { WorkInformation } from "../../data/dataWorkExperience";
 
 const props = defineProps({
   work: {
@@ -35,8 +35,8 @@ const props = defineProps({
 }
 .role-title {
   color: var(--color-light);
-  font-size: 1.5em;
-  font-weight: 400;
+  font-size: 1.3em;
+  font-weight: 300;
 }
 .select-card {
   padding: 1em;
@@ -46,16 +46,21 @@ const props = defineProps({
   display: flex;
   flex-direction: row;
   gap: 2em;
-  border-radius: var(--radius-card);
-  box-shadow: var(--card-shadow);
-
+  /* border-radius: var(--radius-card); */
+ 
   &:hover {
     cursor: pointer;
   }
 }
 
 .show-select-card {
-  background-color: var(--color-dg);
+ 
+  border-bottom: 2px solid var(--color-accent);
+  background: linear-gradient(to left ,var(--color-dark),var(--color-dg));
+  .role-title{
+    color: var(--color-accent);
+  }
+
 }
 .select-text-box {
   display: flex;

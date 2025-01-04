@@ -1,6 +1,6 @@
 <!-- SCRIPTING & FUNCTIONS -->
 <script setup lang="ts">
-import type { WorkInformation } from '../data/dataWorkExperience';
+import type { WorkInformation } from '../../data/dataWorkExperience';
 
 const props = defineProps({
   work: {
@@ -18,8 +18,7 @@ const props = defineProps({
 <template>
 <div :class="['work-info-box',{'show-job': selected}]">
     <h2 class="job-title">{{props.work.jobTitle}}</h2>
-    <p class="company">{{props.work.company}}</p>
-    <p class="job-year">{{props.work.duration}}</p>
+    <p class="company-year">{{props.work.company}} | {{props.work.duration}}</p>
     <ul class="duties-list">
         <li class="duty" v-for="d in props.work.duties">{{d}}</li>
     </ul>
@@ -31,26 +30,22 @@ const props = defineProps({
 .job-title{
     color: var(--color-light);
     font-size: 2em;
-    font-weight: 500;
+    font-weight: 350;
 }
 
-.company{
-    color: var(--color-light);
-    font-size: 1em;
-    font-weight: 300;
-}
-
-.job-year{
+.company-year{
+    margin-left: 2px;
     color: var(--color-mg);
-    font-size: 0.8em;
+    font-size: 0.9em;
     font-weight: 300;
 }
+
 
 .duty{
     color: var(--color-light);
 }
 
-.job-year,.company,.job-title,.duty{
+.company-year,.job-title,.duty{
     width: fit-content;
     height: fit-content;
 }
@@ -64,8 +59,9 @@ const props = defineProps({
     align-items: start;
     justify-content: center;
     border-radius:var(--radius-card) ;
-    box-shadow: var(--card-shadow);
-    background-color: var(--color-dark);
+    gap:5px;
+    /* background-color: var(--color-dg); */
+    background: linear-gradient(to top right,var(--color-dark),var(--color-dg));
     opacity: 0;
     z-index: -1;
 
@@ -79,12 +75,13 @@ const props = defineProps({
 .duties-list{
 
     font-size: 0.9em;
-
+    list-style:square;
+    padding-left: 1.5em;
     margin-top: 10px;
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 7px;
+    gap: 10px;
 }
 
    

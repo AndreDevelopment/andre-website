@@ -25,7 +25,7 @@ const getCodeIcon = (icon: string) => {
     href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
   />
 
-  <div :class="['project-card', { show: show }]">
+  <div :class="['project-card', { 'show': show }]">
     <div class="project-stats">
       <div class="title-box">
         <div class="duration-box">
@@ -58,6 +58,8 @@ const getCodeIcon = (icon: string) => {
 <!-- STYLING -->
 <style>
 .project-card {
+
+  
   width: 100%;
   height: 100%;
   position: absolute;

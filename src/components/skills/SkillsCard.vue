@@ -46,7 +46,7 @@ const props = defineProps({
 .skills-text {
 
   padding-top: 2%;
-  /* background: linear-gradient(to bottom,var(--color-dark),var(--color-dg)); */
+
   background-color: var(--color-dg);
   border-bottom-right-radius: var(--radius-card);
   border-bottom-left-radius: var(--radius-card);

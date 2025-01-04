@@ -1,8 +1,8 @@
 <!-- SCRIPTING & FUNCTIONS -->
 <script setup lang="ts">
-import WorkSelectCard from "./WorkSelectCard.vue";
-import WorkInfoCard from "./WorkInfoCard.vue";
-import { workData } from "../data/dataWorkExperience";
+import WorkSelectCard from "../work/WorkSelectCard.vue";
+import WorkInfoCard from "../work/WorkInfoCard.vue";
+import { workData } from "../../data/dataWorkExperience";
 import { ref } from "vue";
 const activeWorkExp = ref(0);
 
@@ -32,7 +32,7 @@ const handleWorkClick=(workIdx: number)=>{
 <!-- STYLING -->
 <style>
 #work-experience {
-  background-color: var(--color-lg);
+
   justify-content: start;
   gap: 10px;
 }

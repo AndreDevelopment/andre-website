@@ -10,7 +10,7 @@ import Timeline from './Timeline.vue';
     <h1 class="title">Education</h1>    
     <div class="wrapper">
     <div class="school-box">
-        <Timeline v-for="s in educationData.institutions" :instituion="s"/>
+        <Timeline v-for="s in educationData" :instituion="s"/>
         <!-- <EducationCard v-for="i in educationData.institutions" :instituion="i" /> -->
     </div>
     <div class="courses-box">
@@ -44,6 +44,8 @@ import Timeline from './Timeline.vue';
    width: 60%;
    display: flex;
    flex-direction: column;
+   align-items: flex-start;
+   gap: 2px;
    
 }
 

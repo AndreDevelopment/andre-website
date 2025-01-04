@@ -2,7 +2,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { onMounted, onUnmounted } from "vue";
-import Contacts from "./ContactList.vue";
+import Contacts from "./contact/ContactList.vue";
 
 interface CustomScrollIntoViewOptions extends ScrollIntoViewOptions {
   top?: number;

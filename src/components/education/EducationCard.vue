@@ -11,7 +11,6 @@ const props = defineProps({
 </script>
 <!-- BODY & STRUCTURE -->
 <template>
-<div class="institutions">
   <div id="education-card">
     <div class="edu-stats">
       <h2 class="degree">{{ props.instituion.degreeType }}</h2>
@@ -22,20 +21,18 @@ const props = defineProps({
    
   </div>
   
-    </div>
 </template>
 <!-- STYLING -->
 <style>
 #education-card {
     
   padding: 1em;
-  height: 80%;
-  width: 325px;
+  height: fit-content;
+  width: 100%;
   border: transparent solid 2px;
   border-radius: 10px;
   color: var(--color-light);
   background-color: var(--color-dg);
-  /* box-shadow: var(--card-shadow); */
   display: flex;
   flex-direction: column;
 
@@ -50,6 +47,7 @@ transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 
   display: flex;
   flex-direction: column;
+  gap: 5px;
 }
 
 .logo {
@@ -58,11 +56,14 @@ transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   object-fit: contain;
 }
 
+.degree,.field,.school{
+  height: fit-content;
+  width: fit-content;
+}
 
 .degree{
-  text-wrap: wrap;
 font-size: 1.5em;
-font-weight: 500;
+font-weight: 300;
 
 }
 
@@ -76,13 +77,5 @@ font-weight: 500;
   font-size: 0.8em;
   color: var(--color-mg);
 }
-.institutions{
-   
-height: 100%;
-width: 40%;
-display: flex;
-flex-direction: column;
-justify-content: space-around;
-align-items: center;
-}
+
 </style>

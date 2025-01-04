@@ -3,11 +3,11 @@ import NavBar from "./components/NavBar.vue";
 import Home from "./components/Home.vue";
 import Projects from "./components/projects/Projects.vue";
 import Skills from "./components/skills/Skills.vue";
-import WorkExp from "./components/WorkExperience.vue";
+import WorkExp from "./components/work/WorkExperience.vue";
 import Footer from "./components/Footer.vue";
 import Education from "./components/education/Education.vue";
 import Certifications from "./components/Certifications.vue";
-import Contact from "./components/Contact.vue";
+import Contact from "./components/contact/Contact.vue";
 // import anime from 'animejs';
 // import { onMounted, onBeforeMount } from 'vue';
 
@@ -119,6 +119,7 @@ import Contact from "./components/Contact.vue";
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap:15px;
 }
 /* .section h1 {
   opacity: 0;

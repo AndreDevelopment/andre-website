@@ -35,7 +35,7 @@ export const courses: Course[] = [
         institutions:[    {
             degreeType: "Bachelor of Engineering (BEng)",
             fieldName: "Computer Engineering (Software)",
-            institution: "Toronto Metropolitan University (formally Ryerson)",
+            institution: "Toronto Metropolitan University",
             duration: "2019-2024",
             logoURL: "https://www.torontomu.ca/content/dam/brand/global/images/brand-toolkit/brand-toolkit-1.jpg",
           },
@@ -44,7 +44,7 @@ export const courses: Course[] = [
             fieldName: "Student",
             institution: "Senator O'Connor College School",
             duration: "2015-2019",
-            logoURL: "https://cmsv2-assets.apptegy.net/uploads/12725/logo/14322/senator-oconnor.png",
+            logoURL: "https://media.licdn.com/dms/image/v2/C4E0BAQGBP8fhb9sIsQ/company-logo_200_200/company-logo_200_200/0/1651124489779?e=2147483647&v=beta&t=WrzeIweCt5KKL7GQFRfYauNLVQGhfQ83gR0yzq1sce0",
           },]
 
    })

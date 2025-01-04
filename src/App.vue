@@ -131,7 +131,8 @@ import Contact from './components/Contact.vue';
   transform: translateY(50px);
 } */
 .title {
-  height: 2em;
+
+  height: fit-content;
   width: fit-content;
   color: var(--color-dg);
   font-size: 3em;

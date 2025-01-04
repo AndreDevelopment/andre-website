@@ -28,7 +28,8 @@ import Timeline from './Timeline.vue';
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    
 }
 
 .courses-box{
@@ -51,6 +52,8 @@ import Timeline from './Timeline.vue';
 }
 
 .wrapper{
+
+   
     height: 80%;
     width: 100%;
    

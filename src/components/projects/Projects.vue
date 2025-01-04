@@ -20,6 +20,11 @@ const handleRightClick = () => {
   activeProject.value = (activeProject.value + 1) % projectData.length;
 };
 
+const handleSelectSlide = (projectIdx: number) => {
+  activeProject.value = projectIdx;
+};
+
+
 </script>
 <!-- BODY & STRUCTURE -->
 <template>
@@ -42,6 +47,7 @@ const handleRightClick = () => {
           <span
             :class="['dot', { 'dot-active': showProject(index) }]"
             v-for="(_, index) in projectData"
+            @click="handleSelectSlide(index)"
           ></span>
         </div>
       </div>
@@ -54,7 +60,7 @@ const handleRightClick = () => {
 
 #projects {
 
-
+  gap: 10px;
   background-color: var(--color-lg);
 }
 
@@ -128,6 +134,10 @@ const handleRightClick = () => {
   width: 7px;
   border-radius: 50%;
   background-color: rgba(189, 189, 189, 0.41);
+
+  &:hover{
+    cursor: pointer;
+  }
 }
 
 .dot-active {

@@ -1,49 +1,66 @@
 <!-- SCRIPTING & FUNCTIONS -->
 <script setup lang="ts">
 import { courses } from "../../data/dataEducation";
+
+const props = defineProps({
+  tag: {
+    type: String,
+    required: true,
+  },
+});
+
+const filteredCourses = courses.filter((course) => course.tag === props.tag);
 </script>
 <!-- BODY & STRUCTURE -->
 <template>
   <h3 class="courses">Courses</h3>
   <div class="course-box">
-    <div class="course-card" v-for="c in courses">
-      <i :class="['course-icon',c.icon]"></i><a :href="c.courseURL" target="_blank" class="course-link">{{c.name}}</a>
+    <div class="course-card" v-for="c in filteredCourses">
+      <i :class="['course-icon', c.icon]"></i
+      ><a :href="c.courseURL" target="_blank" class="course-link">{{
+        c.name
+      }}</a>
     </div>
   </div>
 </template>
 <!-- STYLING -->
 <style>
-
-.courses{
-
-    height: fit-content;
-    width: fit-content;
+.courses {
+  align-self: center;
+  margin: 5px 0 7px 0;
+  height: fit-content;
+  width: fit-content;
 }
-.course-box{
-    background-color: red;
-    max-height: 60%;
-    width: 60%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    overflow-y: scroll;
-  
+.course-box {
+  max-height: 100%;
+  overflow-y: scroll;
+  /* background-color: var(--color-dark); */
+  /* background: linear-gradient(to bottom,var(--color-dg),var(--color-dark)); */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 5px;
 }
-.course-card{
-    height: fit-content;
-    width: fit-content;
-    display: flex;
-    flex-direction: row;
-    align-items: start;
-    gap: 5px;
-    
+.course-card {
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  gap: 7px;
 }
 
-.course-icon,.course-link{
-    text-decoration: none;
-    color: var(--color-light);
-    height: fit-content;
-    width: fit-content;
+.course-icon,
+.course-link {
+  color: var(--color-light);
+  text-decoration: none;
+
+  height: fit-content;
+  width: fit-content;
+  &:hover {
+    color: var(--color-accent);
+  }
 }
 </style>

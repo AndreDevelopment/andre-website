@@ -34,14 +34,17 @@ const toggleShowCourse = () => {
         ]"
       ></i>
     </button>
-    <Courses v-if="showCourses" />
+    <Courses v-if="showCourses" :tag="props.instituion.tag" />
   </div>
 </template>
 <!-- STYLING -->
 <style>
 #education-card {
   padding: 1em;
-  height: fit-content;
+  height:fit-content;
+  max-height: 160%;
+
+
   width: 100%;
   border: transparent solid 2px;
   border-radius: 10px;

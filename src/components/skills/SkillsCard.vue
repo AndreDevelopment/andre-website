@@ -37,14 +37,13 @@ const props = defineProps({
 
   &:hover {
     cursor: pointer;
-  transform: translateY(-5px); 
-  box-shadow: var(--color-accent) 1px 1px 10px 3px; 
-}
+    transform: translateY(-5px);
+    box-shadow: var(--color-accent) 1px 1px 10px 3px;
+  }
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .skills-text {
-
   padding-top: 2%;
 
   background-color: var(--color-dg);
@@ -59,15 +58,13 @@ const props = defineProps({
 }
 
 .skills-list {
- 
   padding: 1em;
   display: flex;
   flex-direction: column;
- 
+
   align-items: center;
   width: 100%;
-  height: 200px; 
-
+  height: 200px;
 }
 .skill-title {
   height: 1.5em;

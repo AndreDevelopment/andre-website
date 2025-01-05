@@ -39,6 +39,7 @@ const props = defineProps({
   font-weight: 300;
 }
 .select-card {
+  position: relative;
   padding: 1em;
   height: 110px;
   width: 80%;
@@ -47,20 +48,49 @@ const props = defineProps({
   flex-direction: row;
   gap: 2em;
   /* border-radius: var(--radius-card); */
- 
+
   &:hover {
     cursor: pointer;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.1em;
+    background-color: var(--color-accent);
+    opacity: 0;
+    transition: opacity 300ms, transform 300ms;
+  }
+  &:hover::after,
+  &:focus::after {
+    opacity: 1;
+    transform: translate3d(0, 0.2em, 0);
+  }
+
+  &::after {
+    opacity: 1;
+    transform: scale(0);
+    transform-origin: center;
+  }
+
+  &:hover::after,
+  &:focus::after {
+    transform: scale(1);
   }
 }
 
 .show-select-card {
- 
-  border-bottom: 2px solid var(--color-accent);
-  background: linear-gradient(to left ,var(--color-dark),var(--color-dg));
-  .role-title{
+  
+  background: linear-gradient(to left, var(--color-dark), var(--color-dg));
+  .role-title {
     color: var(--color-accent);
   }
-
+  &::after {
+    transform: scale(1);
+  }
 }
 .select-text-box {
   display: flex;

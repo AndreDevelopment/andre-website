@@ -1,7 +1,7 @@
 <!-- SCRIPTING & FUNCTIONS -->
 <script setup lang="ts">
 import { educationData } from '../../data/dataEducation';
-// import Courses from './Courses.vue';
+
 import Timeline from './Timeline.vue';
 </script>
 <!-- BODY & STRUCTURE -->
@@ -9,13 +9,13 @@ import Timeline from './Timeline.vue';
 <div class="section" id="education">
     <h1 class="title">Education</h1>    
     <div class="wrapper">
-    <div class="school-box">
+    <!-- <div class="school-box"> -->
         <Timeline v-for="s in educationData" :instituion="s"/>
-        <!-- <EducationCard v-for="i in educationData.institutions" :instituion="i" /> -->
-    </div>
-    <div class="courses-box">
-        <!-- <Courses/> -->
-    </div>
+
+    <!-- </div> -->
+    <!-- <div class="courses-box">
+        <Courses/>
+    </div> -->
    
     </div>
 </div>
@@ -24,13 +24,12 @@ import Timeline from './Timeline.vue';
 <style >
 #education{
     color: var(--color-white);
-    /* background-color: var(--color-lg); */
-
+    justify-content: flex-start;
 }
 
-.courses-box{
-   
-
+/* .courses-box{
+    background-color: red;
+    height: 100%;
     width: 40%;
     display: flex;
     flex-direction: column;
@@ -47,7 +46,7 @@ import Timeline from './Timeline.vue';
    align-items: flex-start;
    gap: 2px;
    
-}
+} */
 
 .wrapper{
 
@@ -56,7 +55,7 @@ import Timeline from './Timeline.vue';
     width: 100%;
    
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }

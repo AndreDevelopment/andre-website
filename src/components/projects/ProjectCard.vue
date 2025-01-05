@@ -19,11 +19,7 @@ const getCodeIcon = (icon: string) => {
 </script>
 <!-- BODY & STRUCTURE -->
 <template>
-  <link
-    rel="stylesheet"
-    type="text/css"
-    href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
-  />
+
 
   <div :class="['project-card', { 'show': show }]">
     <div class="project-stats">

@@ -14,7 +14,7 @@ export const skillsData: SkillsInformation[] = [
   {
     name: "Frameworks",
     icon: "pi pi-cog",
-    skills: ['React', 'Node.js', 'Vue', 'Spring Boot','TestNG','Selenium','Laravel'],
+    skills: ['React', 'Node.js', 'Vue', 'Spring Boot','SignalR','Selenium','Laravel'],
   },
   {
     name: "Developer Tools",

@@ -9,6 +9,7 @@ export const codeIcons: Record<string, string> = {
   'c#': 'devicon-csharp-plain',
   'react':'devicon-react-original',
   'vue':'devicon-vuejs-plain',
+  'typescript':'devicon-typescript-plain',
   'mongodb':'devicon-mongodb-plain',
   'docker':'devicon-docker-plain',
   'javascript':'devicon-javascript-plain',

@@ -1,32 +1,49 @@
 <!-- SCRIPTING & FUNCTIONS -->
 <script setup lang="ts">
-import { courses } from '../../data/dataEducation';
+import { courses } from "../../data/dataEducation";
 </script>
 <!-- BODY & STRUCTURE -->
 <template>
-<table>
-  <thead>
-    <tr>
-      <th>Course Name</th>
-
-    </tr>
-  </thead>
-  <tbody>
-    <tr v-for="course in courses" :key="course.name">
-      <td><a :href="course.courseURL" target="_blank"><i :class="course.icon"></i> {{ course.name }}</a> </td>
-  
-    </tr>
-  </tbody>
-</table>
+  <h3 class="courses">Courses</h3>
+  <div class="course-box">
+    <div class="course-card" v-for="c in courses">
+      <i :class="['course-icon',c.icon]"></i><a :href="c.courseURL" target="_blank" class="course-link">{{c.name}}</a>
+    </div>
+  </div>
 </template>
 <!-- STYLING -->
-<style >
- table {
-    border-collapse: collapse; 
-  }
+<style>
 
-  th, td {
-    border-bottom: 1px solid #ddd; 
-   
-  }
+.courses{
+
+    height: fit-content;
+    width: fit-content;
+}
+.course-box{
+    background-color: red;
+    max-height: 60%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow-y: scroll;
+  
+}
+.course-card{
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    gap: 5px;
+    
+}
+
+.course-icon,.course-link{
+    text-decoration: none;
+    color: var(--color-light);
+    height: fit-content;
+    width: fit-content;
+}
 </style>

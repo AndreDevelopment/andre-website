@@ -43,7 +43,7 @@ const props = defineProps({
 .edu-box,
 .year-box {
   height: 100%;
-  width: 40%;
+  width: 45%;
   color: var(--color-dg);
   padding: 1em;
 
@@ -68,13 +68,24 @@ const props = defineProps({
 .line-box {
   position: relative;
   height: 100%;
-  width: 20%;
+  width: 10%;
 
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
+  &::after {
+    bottom: 0;
+    height: 20%;
+    width: inherit;
+    content: "";
+    position: absolute;
+    background: linear-gradient(to bottom, transparent, black);
+    z-index: 1;
+  }
 }
+
 .school-img {
   --school-img-sz: 70px;
   position: absolute;
@@ -86,7 +97,12 @@ const props = defineProps({
   display: flex;
   justify-content: center;
   align-items: center;
-  object-fit: contain;
+
+  &:hover {
+    cursor: pointer;
+    transform:scale(1.3);
+  }
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .timeline-box {
@@ -98,6 +114,12 @@ const props = defineProps({
 }
 .timeline-box:nth-child(odd) {
   flex-direction: row;
+  .line-box {
+    &::after {
+      top: 0;
+      background: linear-gradient(to top, transparent, black);
+    }
+  }
 }
 .timeline-box:nth-child(even) {
   .year-box {

@@ -53,6 +53,11 @@ import Contact from "./components/contact/Contact.vue";
 </script>
 
 <template>
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+  />
   <NavBar />
   <Home />
   <WorkExp />
@@ -113,20 +118,19 @@ import Contact from "./components/contact/Contact.vue";
 
 .section {
   min-height: 100vh;
-  padding-top: 2em;
+  padding-top: 1em;
   background-color: var(--color-dark);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap:15px;
+  gap: 1em;
 }
 /* .section h1 {
   opacity: 0;
   transform: translateY(50px);
 } */
 .title {
-
   height: fit-content;
   width: fit-content;
   color: var(--color-light);

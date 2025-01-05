@@ -34,7 +34,7 @@ const handleWorkClick=(workIdx: number)=>{
 #work-experience {
 
   justify-content: start;
-  gap: 10px;
+  
 }
 
 .work-wrapper {

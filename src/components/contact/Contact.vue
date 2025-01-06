@@ -15,7 +15,7 @@ import ContactList from "./ContactList.vue";
         </div>
         <div class="contact-form-box">
             <h2 class="media">Media Links</h2>
-            <button class="btn-resume btn-submit">Download my Resume</button>
+            <button class="btn-resume btn-submit">Download my Resume <i class="pi pi-download"></i></button>
             <ContactList/>
         </div>
        

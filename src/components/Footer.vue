@@ -15,13 +15,13 @@ import { codeIcons } from "../data/dataProjects";
 #footer-box {
   color: white;
   width: 100%;
-  height: 5%;
+  height: 10%;
   background-color: var(--color-dark);
 
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   font-size: 1em;
   gap: 5px;
   color: var(--color-mg);

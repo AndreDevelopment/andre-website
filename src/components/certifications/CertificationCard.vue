@@ -63,7 +63,7 @@ const props = defineProps({
   justify-content: start;
   align-items: center;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 7px;
 
 }
 

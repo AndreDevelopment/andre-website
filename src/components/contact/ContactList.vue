@@ -3,7 +3,7 @@
 <!-- BODY & STRUCTURE -->
 <template>
 
-  <div class="contact-box">
+  <div class="contact-list">
     <a href="mailto:andredsouza15@gmail.com" target="_blank" class="link-contact">
       <button class="btn-contact" id="email">
         <i class="icon-contact pi pi-envelope"></i></button
@@ -21,7 +21,7 @@
 <!-- STYLING -->
 <style>
 
-.contact-box{
+.contact-list{
 
   width: 200px;
   height: 40px;

@@ -25,7 +25,7 @@ const props = defineProps({
 <style>
 .skill-card {
   padding-top: 2%;
-  background: linear-gradient(to bottom, var(--color-dark), var(--color-dg));
+  background: linear-gradient(to top, var(--color-dark), var(--color-dg));
   border-radius: var(--radius-card);
   width: 250px;
   height: 350px;

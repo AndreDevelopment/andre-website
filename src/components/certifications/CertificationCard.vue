@@ -15,7 +15,7 @@ const props = defineProps({
     <div class="cert-img-box"></div>
 
     <h3 class="cert-name">{{ props.cert.name }}</h3>
-    <p class="cert-date">{{ props.cert.date }} • <a :href="props.cert.credentialLink">Show Credential <i class="pi pi-arrow-up-right"></i> </a> </p>
+    <p class="cert-date">{{ props.cert.date }} • <a target="_blank" :href="props.cert.credentialLink">Show Credential <i class="pi pi-arrow-up-right"></i> </a> </p>
     <p class="cert-desc">{{ props.cert.description }}</p>
     <div class="pill-box">
       <p class="pill" v-for="s in props.cert.skills">{{s}}</p>

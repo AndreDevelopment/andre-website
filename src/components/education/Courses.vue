@@ -16,10 +16,9 @@ const filteredCourses = courses.filter((course) => course.tag === props.tag);
   <h3 class="courses">Courses</h3>
   <div class="course-box">
     <div class="course-card" v-for="c in filteredCourses">
-      <i :class="['course-icon', c.icon]"></i
-      ><a :href="c.courseURL" target="_blank" class="course-link">{{
-        c.name
-      }}</a>
+      <a :href="c.courseURL" target="_blank" class="course-link">
+        <i :class="['course-icon', c.icon]"></i> &ThickSpace;{{ c.name }}</a
+      >
     </div>
   </div>
 </template>
@@ -52,7 +51,7 @@ const filteredCourses = courses.filter((course) => course.tag === props.tag);
   gap: 7px;
 }
 
-.course-icon,
+
 .course-link {
   color: var(--color-light);
   text-decoration: none;

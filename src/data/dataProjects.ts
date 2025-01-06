@@ -2,6 +2,7 @@
 import TalkifAIImg from '../assets/talkifAIScreen.png'
 import secureBank from '../assets/secureBank.png'
 import stockWatch from '../assets/stockWatch.png'
+import shipStack from '../assets/ShipStack.png'
 
 export const codeIcons: Record<string, string> = {
   'python': 'devicon-python-plain',
@@ -39,6 +40,14 @@ export const projectData:ProjectInformation[] =[
     imageURL: TalkifAIImg,
     techStack: ["React", "MongoDB", "C#",'.NET'],
     projectURL: "https://talkifai.azurewebsites.net",
+  },
+  {
+    name: "Ship Stack",
+    duration:"December 2024 - January 2025",
+    description: "A shipping aggregator tool used to optimize the delivery path to customers in similar residential areas",
+    imageURL: shipStack,
+    techStack: ["Python","vue","typescript"],
+    projectURL: "",
   },
   {
     name: "Secure Banking System",

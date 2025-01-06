@@ -25,7 +25,7 @@ const toggleShowCourse = () => {
       <h3 class="field">{{ props.instituion.fieldName }}</h3>
     </div>
     <button class="btn-courses" @click="toggleShowCourse()">
-      View Courses
+      View Relevant Courses
       <i
         :class="[
           'view-chev-icon',
@@ -45,11 +45,12 @@ const toggleShowCourse = () => {
   max-height: 160%;
 
 
-  width: 100%;
-  border: transparent solid 2px;
+  width: 80%;
+ 
   border-radius: 10px;
   color: var(--color-light);
-  background-color: var(--color-dg);
+  background: linear-gradient(to top left,var(--color-dark),var(--color-dg));
+  /* background-color: var(--color-dg); */
   display: flex;
   flex-direction: column;
 

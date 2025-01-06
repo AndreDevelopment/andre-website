@@ -6,7 +6,7 @@ import Skills from "./components/skills/Skills.vue";
 import WorkExp from "./components/work/WorkExperience.vue";
 import Footer from "./components/Footer.vue";
 import Education from "./components/education/Education.vue";
-import Certifications from "./components/Certifications.vue";
+import Certifications from "./components/certifications/Certifications.vue";
 import Contact from "./components/contact/Contact.vue";
 // import anime from 'animejs';
 // import { onMounted, onBeforeMount } from 'vue';

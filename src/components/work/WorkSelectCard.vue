@@ -47,7 +47,7 @@ const props = defineProps({
   display: flex;
   flex-direction: row;
   gap: 2em;
-  /* border-radius: var(--radius-card); */
+  border-radius: var(--radius-card);
 
   &:hover {
     cursor: pointer;
@@ -58,7 +58,7 @@ const props = defineProps({
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%;
+    width: 90%;
     height: 0.1em;
     background-color: var(--color-accent);
     opacity: 0;

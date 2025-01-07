@@ -2,22 +2,22 @@
 <script setup lang="ts">
 
 import ContactForm from "./ContactForm.vue";
-import ContactList from "./ContactList.vue";
+
 </script>
 <!-- BODY & STRUCTURE -->
 <template>
 <div class="section" id="contact">
     <h1 class="title">Contact Me</h1>
-    <h3 class="greet">I'd love to hear from you! Let's connect.</h3>
+    <!-- <h3 class="greet">I'd love to hear from you! Let's connect.</h3> -->
     <div class="contact-box">
-        <div class="contact-form-box">
+        <!-- <div class="contact-form-box"> -->
             <ContactForm/>
-        </div>
-        <div class="contact-form-box">
+        <!-- </div> -->
+        <!-- <div class="contact-form-box">
             <h2 class="media">Media Links</h2>
             <button class="btn-resume btn-submit">Download my Resume <i class="pi pi-download"></i></button>
             <ContactList/>
-        </div>
+        </div> -->
        
     </div>
 

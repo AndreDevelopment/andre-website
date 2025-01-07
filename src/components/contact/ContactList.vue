@@ -5,17 +5,17 @@
 
   <div class="contact-list">
     <a href="mailto:andredsouza15@gmail.com" target="_blank" class="link-contact">
-      <button class="btn-contact" id="email">
-        <i class="icon-contact pi pi-envelope"></i></button
-    ></a>
+      <i class="icon-contact pi pi-envelope"></i>
+      </a>
     <a href="https://www.linkedin.com/in/andre-j-d-souza" target="_blank" class="link-contact"
-      ><button class="btn-contact" id="linked-id">
-        <i class="icon-contact devicon-linkedin-plain"></i></button
-    ></a>
+      ><i class="icon-contact devicon-linkedin-plain"></i>
+
+    </a>
     <a href="https://github.com/AndreDevelopment" target="_blank" class="link-contact"
-      ><button class="btn-contact" id="github">
-        <i class="icon-contact devicon-github-original"></i></button
-    ></a>
+      >
+      <i class="icon-contact devicon-github-original"></i>
+
+    </a>
   </div>
 </template>
 <!-- STYLING -->
@@ -31,55 +31,21 @@
   gap: 20px;
 }
 
-
-.btn-contact {
-  
-  position: relative;
-  height: 100%;
-  width: 100%;
+.link-contact {
   font-size: 1.5em;
   font-weight: 400;
-  border: transparent;
-  color: var(--color-accent);
-  /* border: solid 2px var(--color-accent); */
-  border-radius: 50%;
-  background-color: transparent;
-
-  z-index: 2;
-  overflow: hidden;
-  &:hover {
-    color: var(--color-light);
-    cursor: pointer;
-  }
-
-  &:hover:after {
-    left: 0;
-    width: 100%;
-    border-radius: 30px;
-    color: var(--color-light);
-  }
-
-  &:after {
-    background-color: var(--color-accent);
-    border-radius: 30px;
-    overflow: hidden;
-    position: absolute;
-    content: "";
-    width: 0;
-    height: 100%;
-    top: 0;
-    right: 0;
-    z-index: -1;
-
-    transition: all 0.5s ease;
-  }
-}
-
-.link-contact {
+  /* border: transparent; */
+  color: var(--color-light);
+  text-decoration: none;
   height: 40px;
   width: 40px;
   border-radius: 50%;
   text-decoration: none;
+  &:hover {
+    color: var(--color-accent);
+    cursor: pointer;
+  }
+  transition: 0.2s ease-in-out;
 }
 
 #email{

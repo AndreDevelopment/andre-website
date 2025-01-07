@@ -24,11 +24,11 @@
 .contact-list{
 
   width: 200px;
-  height: 40px;
+  height: 30px;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 20px;
+  gap: 30px;
 }
 
 .link-contact {
@@ -37,8 +37,8 @@
   /* border: transparent; */
   color: var(--color-light);
   text-decoration: none;
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
   border-radius: 50%;
   text-decoration: none;
   &:hover {

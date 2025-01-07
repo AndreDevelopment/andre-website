@@ -12,10 +12,10 @@ const props = defineProps({
 <!-- BODY & STRUCTURE -->
 <template>
   <div class="cert-card">
-    <div class="cert-img-box"></div>
-
-    <h3 class="cert-name">{{ props.cert.name }}</h3>
-    <p class="cert-date">{{ props.cert.date }} • <a target="_blank" :href="props.cert.credentialLink">Show Credential <i class="pi pi-arrow-up-right"></i> </a> </p>
+    <!-- <div class="cert-img-box"></div> -->
+    
+    <h3 class="cert-name">  {{ props.cert.name }}</h3>
+    <p class="cert-date"><i :class="props.cert.companyIcon" id="cert-icon"></i> | {{ props.cert.date }} • <a target="_blank" :href="props.cert.credentialLink">Show Credential <i class="pi pi-arrow-up-right"></i> </a> </p>
     <p class="cert-desc">{{ props.cert.description }}</p>
     <div class="pill-box">
       <p class="pill" v-for="s in props.cert.skills">{{s}}</p>
@@ -45,12 +45,19 @@ const props = defineProps({
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-.cert-img-box {
+/* .cert-img-box {
   background-color: var(--color-dark);
-  height: 20%;
-  width: 100%;
-  align-self: center;
+  height: 40px;
+  width: 15%;
+  align-self: flex-start;
   border-radius: var(--radius-card);
+} */
+
+#cert-icon{
+  /* background-color: var(--color-dark); */
+  height: fit-content;
+  width: fit-content;
+  color:var(--color-mg);
 }
 
 .pill-box{

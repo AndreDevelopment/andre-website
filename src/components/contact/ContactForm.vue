@@ -52,6 +52,7 @@ const fromFields = ["Name", "Email"];
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   
 }
 .head-box,.name-mail-box {

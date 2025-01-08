@@ -22,9 +22,8 @@
 <style>
 
 .contact-list{
-
-  width: 200px;
-  height: 30px;
+  width: fit-content;
+  height: fit-content;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -34,11 +33,8 @@
 .link-contact {
   font-size: 1.5em;
   font-weight: 400;
-  /* border: transparent; */
   color: var(--color-light);
   text-decoration: none;
-  height: 30px;
-  width: 30px;
   border-radius: 50%;
   text-decoration: none;
   &:hover {

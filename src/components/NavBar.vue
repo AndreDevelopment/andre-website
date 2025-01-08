@@ -2,7 +2,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { onMounted, onUnmounted } from "vue";
-import Contacts from "./contact/ContactList.vue";
+import ContactList from "./contact/ContactList.vue";
 
 interface CustomScrollIntoViewOptions extends ScrollIntoViewOptions {
   top?: number;
@@ -58,7 +58,7 @@ const isSectionActive = (sectionId: string) => {
 <template>
   <div id="nav-bar-box">
     <div class="nav-zones" id="left-nav">
-      <Contacts/>
+      <ContactList/>
     </div>
     <div class="nav-zones" id="right-nav">
       <ul id="nav-list">

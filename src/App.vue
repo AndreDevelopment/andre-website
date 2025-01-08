@@ -139,4 +139,47 @@ import Contact from "./components/contact/Contact.vue";
   font-weight: 500;
   font-style: normal;
 }
+
+.btn {
+
+  position: relative;
+  height: fit-content;
+  width: fit-content;
+  font-size: 0.7em;
+  font-weight: 300;
+
+  color: var(--color-accent);
+  border: solid 2px var(--color-accent);
+  border-radius: 30px;
+  background-color: transparent;
+
+  z-index: 2;
+  overflow: hidden;
+  &:hover {
+    color: var(--color-light);
+    cursor: pointer;
+  }
+
+  &:hover:after {
+    left: 0;
+    width: 100%;
+    border-radius: 30px;
+    color: var(--color-light);
+  }
+
+  &:after {
+    background-color: var(--color-accent);
+    border-radius: 30px;
+    overflow: hidden;
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    right: 0;
+    z-index: -1;
+
+    transition: all 0.4s ease;
+  }
+}
 </style>

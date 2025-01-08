@@ -34,7 +34,7 @@ const fromFields = ["Name", "Email"];
         <textarea id="message" name="message" rows="5" required></textarea>
       </div>
     </div>
-    <button class="btn-submit">
+    <button class="btn btn-submit">
       Send Message <i class="send-icon pi pi-send"></i>
     </button>
   </form>
@@ -131,44 +131,6 @@ const fromFields = ["Name", "Email"];
 .btn-submit {
 
   padding: 1%;
-  position: relative;
-  height: fit-content;
-  width: fit-content;
-  font-size: 0.9em;
-  font-weight: 400;
-
-  color: var(--color-accent);
-  border: solid 2px var(--color-accent);
-  border-radius: 30px;
-  background-color: transparent;
-
-  z-index: 2;
-  overflow: hidden;
-  &:hover {
-    color: var(--color-light);
-    cursor: pointer;
-  }
-
-  &:hover:after {
-    left: 0;
-    width: 100%;
-    border-radius: 30px;
-    color: var(--color-light);
-  }
-
-  &:after {
-    background-color: var(--color-accent);
-    border-radius: 30px;
-    overflow: hidden;
-    position: absolute;
-    content: "";
-    width: 0;
-    height: 100%;
-    top: 0;
-    right: 0;
-    z-index: -1;
-
-    transition: all 0.4s ease;
-  }
+ 
 }
 </style>

@@ -19,20 +19,18 @@ const getCodeIcon = (icon: string) => {
 </script>
 <!-- BODY & STRUCTURE -->
 <template>
-
-
-  <div :class="['project-card', { 'show': show }]">
+  <div :class="['project-card', { show: show }]">
     <div class="project-stats">
       <div class="title-box">
         <div class="duration-box">
           <h1>{{ props.project.name }}</h1>
-          <p class="duration">{{props.project.duration}}</p>
+          <p class="duration">{{ props.project.duration }}</p>
         </div>
-        
+
         <div class="techstack-box">
           <i
             v-for="t in props.project.techStack"
-            :class="[getCodeIcon(t.toLocaleLowerCase()),'tech-icon']"
+            :class="[getCodeIcon(t.toLocaleLowerCase()), 'tech-icon']"
           >
           </i>
         </div>
@@ -41,7 +39,7 @@ const getCodeIcon = (icon: string) => {
       <p class="description">{{ props.project.description }}</p>
 
       <a :href="props.project.projectURL" target="blank" class="check-link">
-        <button class="btn-check">Check it out</button>
+        <button class="btn btn-check">Check it out</button>
       </a>
     </div>
     <div
@@ -54,8 +52,6 @@ const getCodeIcon = (icon: string) => {
 <!-- STYLING -->
 <style>
 .project-card {
-
-  
   width: 100%;
   height: 100%;
   position: absolute;
@@ -82,25 +78,25 @@ const getCodeIcon = (icon: string) => {
   gap: 1em;
 }
 
-.tech-icon{
+.tech-icon {
   height: 100%;
   font-size: 0.7em;
 }
 
-.duration-box{
+.duration-box {
   display: flex;
   flex-direction: column;
   gap: 8px;
   width: 100%;
 }
 
-.duration{
+.duration {
   margin-left: 4px;
   font-size: 0.8em;
   color: var(--color-mg);
 }
 
-.title-box{
+.title-box {
   font-size: 1.2em;
   font-weight: 500;
 
@@ -118,9 +114,9 @@ const getCodeIcon = (icon: string) => {
 }
 .techstack-box {
   padding-top: 4px;
-  
+
   height: 100%;
-  max-width:50% ;
+  max-width: 50%;
   gap: 7px;
   display: flex;
   flex-direction: row;
@@ -129,59 +125,21 @@ const getCodeIcon = (icon: string) => {
   font-size: 2em;
 }
 
-
 .check-link {
   height: 2.5em;
   width: 8em;
   text-decoration: none;
-}
-
-.btn-check {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  font-size: 0.9em;
-  font-weight: 400;
-
-  color: var(--color-accent);
-  border: solid 2px var(--color-accent);
-  border-radius: 30px;
-  background-color: transparent;
-
-  z-index: 2;
-  overflow: hidden;
-  &:hover {
-    color: var(--color-light);
-    cursor: pointer;
-  }
-
-  &:hover:after {
-    left: 0;
-    width: 100%;
-    border-radius: 30px;
-    color: var(--color-light);
-  }
-
-  &:after {
-    background-color: var(--color-accent);
-    border-radius: 30px;
-    overflow: hidden;
-    position: absolute;
-    content: "";
-    width: 0;
+  .btn-check {
+    padding: 2%;
     height: 100%;
-    top: 0;
-    right: 0;
-    z-index: -1;
-
-    transition: all 0.4s ease;
+    width: 100%;
+    font-size: 1em;
   }
 }
 
 .project-image {
-
   position: relative;
-  background-position:right;
+  background-position: right;
   background-size: contain;
   background-repeat: no-repeat;
   border-radius: 10px;
@@ -189,15 +147,15 @@ const getCodeIcon = (icon: string) => {
   width: 50%;
   box-sizing: border-box;
   &::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: inherit; 
-  background: linear-gradient(to right, var(--color-dark), transparent); 
-}
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(to right, var(--color-dark), transparent);
+  }
 }
 
 .show {

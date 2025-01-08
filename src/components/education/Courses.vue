@@ -33,8 +33,6 @@ const filteredCourses = courses.filter((course) => course.tag === props.tag);
 .course-box {
   max-height: 100%;
   overflow-y: scroll;
-  /* background-color: var(--color-dark); */
-  /* background: linear-gradient(to bottom,var(--color-dg),var(--color-dark)); */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -42,6 +40,7 @@ const filteredCourses = courses.filter((course) => course.tag === props.tag);
   justify-content: flex-start;
   gap: 5px;
 }
+
 .course-card {
   height: fit-content;
   width: fit-content;

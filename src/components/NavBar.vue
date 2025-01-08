@@ -37,17 +37,16 @@ const scrollTo = (sectionId: string) => {
 };
 
 const handleScroll = () => {
+  const scrollOffset = 0; // Adjust the offset if needed
   const sections = document.querySelectorAll("div.section");
   sections.forEach((section) => {
     const rect = section.getBoundingClientRect();
-    if (
-      rect.top + scrollOffset >= 0 &&
-      rect.bottom + scrollOffset <= window.innerHeight
-    ) {
+    if (rect.top + scrollOffset < window.innerHeight && rect.bottom + scrollOffset > 0) {
       activeSection.value = section.id;
     }
   });
 };
+
 
 const isSectionActive = (sectionId: string) => {
   sectionId = convertSectionId(sectionId);

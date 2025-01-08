@@ -101,6 +101,7 @@ const downloadResume = async () => {
 
 .me-item {
   width: fit-content;
+
 }
 .animation {
   height: 50px;
@@ -115,16 +116,17 @@ const downloadResume = async () => {
 }
 
 .animation div:first-child {
-  animation: text-animation 10s infinite ease-in-out;
+  animation: text-animation 8s infinite ease-in-out;
 }
 
 .me-item div {
   background-color: var(--color-light);
   color: var(--color-dark);
+  text-align: center;
 }
 .intro-box {
   transform: scale(1.3);
-  margin-top: 20%;
+  margin-top: 15%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

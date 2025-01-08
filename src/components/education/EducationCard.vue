@@ -43,14 +43,10 @@ const toggleShowCourse = () => {
   padding: 1em;
   height:fit-content;
   max-height: 160%;
-
-
   width: 80%;
- 
   border-radius: 10px;
   color: var(--color-light);
   background: linear-gradient(to top left,var(--color-dark),var(--color-dg));
-  /* background-color: var(--color-dg); */
   display: flex;
   flex-direction: column;
 

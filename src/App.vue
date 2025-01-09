@@ -13,9 +13,10 @@ import { onMounted, onBeforeMount, ref } from "vue";
 
 const animations = [] as anime.AnimeInstance[];
 const prevSectionRect = ref(new DOMRect());
+
+
 const initAnimations = () => {
   const sections = document.querySelectorAll("div.section") ;
-  // console.log(sections)
   sections.forEach((section) => {
 
     const title = section.querySelector(".title")as HTMLElement;
@@ -38,10 +39,10 @@ const initAnimations = () => {
     }
   });
 
-  // console.log(animations)
+  console.log(animations)
 };
 const handleScroll = () => {
-  const scrollOffset = 80; // Adjust the offset if needed
+  const scrollOffset = 80; 
   const sections = document.querySelectorAll("div.section");
 
   sections.forEach((section) => {
@@ -59,6 +60,7 @@ const handleScroll = () => {
         const targetElement = animation.animatables[0].target;
 
         if (targetElement === section.querySelector(".title")) {
+          //Check to see if the animation has played already or not (Don't want to loop the animation)
           if (!animation.completed && isSectionVisible){
             animation.play();
           }

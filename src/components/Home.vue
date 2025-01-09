@@ -42,6 +42,7 @@ const downloadResume = async () => {
 <!-- BODY & STRUCTURE -->
 <template>
   <div class="section" id="home">
+    <h1 class="title">hello world</h1>
     <div class="main"></div>
     <div class="intro-box">
       <p class="hello">Hello I'm</p>

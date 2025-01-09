@@ -8,48 +8,79 @@ import Footer from "./components/Footer.vue";
 import Education from "./components/education/Education.vue";
 import Certifications from "./components/certifications/Certifications.vue";
 import Contact from "./components/contact/Contact.vue";
-// import anime from 'animejs';
-// import { onMounted, onBeforeMount } from 'vue';
+import anime from "animejs";
+import { onMounted, onBeforeMount, ref } from "vue";
 
-// const animations =  [] as anime.AnimeInstance[];
+const animations = [] as anime.AnimeInstance[];
+const prevSectionRect = ref(new DOMRect());
+const initAnimations = () => {
+  const sections = document.querySelectorAll("div.section") ;
+  // console.log(sections)
+  sections.forEach((section) => {
 
-//   const  initAnimations = ()=> {
-//       const sections = document.querySelectorAll("div.section");
-//       sections.forEach((section) => {
-//         animations.push(
-//           anime({
-//             targets: section.querySelector('h1')!,
-//             opacity: [0, 1],
-//             translateY: [50, 0],
-//             duration: 800,
-//             easing: 'easeInOutExpo',
-//             begin: () => {},
-//           })
-//         );
-//       });
-//     };
-//     const handleScroll = () => {
-//       const windowHeight = window.innerHeight;
-//       const scrollY = window.scrollY;
+    const title = section.querySelector(".title")as HTMLElement;
+    if (title) {
+      animations.push(
+        anime({
+          targets: title!,
+          opacity: [0, 1],
+          translateY: [50, 0],
+          duration: 800,
+          easing: "easeInOutExpo",
+          autoplay: false,
+          begin: () => {},
+          direction: 'normal', 
+          complete: () => {
+            title.dataset.animated = 'true'; 
+          }
+        })
+      );
+    }
+  });
 
-//       animations.forEach((animation, index) => {
-//         const section = document.querySelector(`#section${index + 1}`) as HTMLElement;
-//         const sectionTop = section.offsetTop;
-//         const sectionBottom = sectionTop + windowHeight;
+  // console.log(animations)
+};
+const handleScroll = () => {
+  const scrollOffset = 80; // Adjust the offset if needed
+  const sections = document.querySelectorAll("div.section");
 
-//         if (scrollY-80 >= sectionTop - windowHeight / 2 && scrollY-80 <= sectionBottom) {
-//           animation.play();
-//         }
-//       });
-//     };
-//     onBeforeMount(() => {
-//       window.removeEventListener('scroll', handleScroll);
-//     });
+  sections.forEach((section) => {
+    const rect = section.getBoundingClientRect();
+    const isSectionVisible =
+      rect.top + scrollOffset < window.innerHeight &&
+      rect.bottom + scrollOffset > 0;
 
-//     onMounted(() => {
-//       initAnimations();
-//       window.addEventListener('scroll', handleScroll);
-//     });
+    // Check if the section is entering the viewport from above OR is visible and user is scrolling down
+    if (
+      (!isSectionVisible && prevSectionRect.value && prevSectionRect.value.bottom < rect.top) ||
+      (isSectionVisible && prevSectionRect.value && prevSectionRect.value.top < rect.top)
+    ) {
+      animations.forEach((animation) => {
+        const targetElement = animation.animatables[0].target;
+
+        if (targetElement === section.querySelector(".title")) {
+          if (!animation.completed && isSectionVisible){
+            animation.play();
+          }
+            
+        }
+      });
+    }
+
+    prevSectionRect.value = rect;
+  });
+};
+
+
+onBeforeMount(() => {
+  window.removeEventListener("scroll", handleScroll);
+});
+
+onMounted(() => {
+  window.addEventListener("scroll", handleScroll);
+  initAnimations();
+ 
+});
 </script>
 
 <template>
@@ -141,7 +172,6 @@ import Contact from "./components/contact/Contact.vue";
 }
 
 .btn {
-
   position: relative;
   height: fit-content;
   width: fit-content;

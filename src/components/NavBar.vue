@@ -37,7 +37,7 @@ const scrollTo = (sectionId: string) => {
 };
 
 const handleScroll = () => {
-  const scrollOffset = 0; // Adjust the offset if needed
+  const scrollOffset = 180;
   const sections = document.querySelectorAll("div.section");
   sections.forEach((section) => {
     const rect = section.getBoundingClientRect();

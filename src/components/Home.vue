@@ -43,7 +43,7 @@ const downloadResume = async () => {
 <template>
   <div class="section" id="home">
     <div class="main"></div>
-    <div class="intro-box">
+    <div class="intro-box fit-content">
       <p class="hello">Hello I'm</p>
       <section class="animation">
         <div class="me-item" id="andre"><div>Andre D'Souza</div></div>
@@ -52,7 +52,7 @@ const downloadResume = async () => {
       </section>
     </div>
     <div class="btn-group-box">
-      <div class="contact-wrap">
+      <div class="contact-wrap fit-content">
       <ContactList />
     </div>
       <button class="btn btn-resume" @click="downloadResume()">
@@ -72,14 +72,10 @@ const downloadResume = async () => {
   background-color: var(--color-dark);
   font-size: 2.26rem;
   text-transform: uppercase;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+
 }
 .contact-wrap{
   margin: auto;
-  height: fit-content;
-  width: fit-content;
 }
 .btn-group-box {
   height: 30%;
@@ -130,8 +126,6 @@ const downloadResume = async () => {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: fit-content;
-  width: fit-content;
 }
 #btn-next {
   position: relative;

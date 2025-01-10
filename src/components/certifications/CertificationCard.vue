@@ -11,14 +11,18 @@ const props = defineProps({
 </script>
 <!-- BODY & STRUCTURE -->
 <template>
-  <div class="cert-card">
-    <!-- <div class="cert-img-box"></div> -->
-    
-    <h3 class="cert-name">  {{ props.cert.name }}</h3>
-    <p class="cert-date"><i :class="props.cert.companyIcon" id="cert-icon"></i> | {{ props.cert.date }} • <a target="_blank" :href="props.cert.credentialLink">Show Credential <i class="pi pi-arrow-up-right"></i> </a> </p>
-    <p class="cert-desc">{{ props.cert.description }}</p>
+  <div class="cert-card card-hover">
+    <h3 class="cert-name fit-content">{{ props.cert.name }}</h3>
+    <p class="cert-date fit-content">
+      <i :class="props.cert.companyIcon" id="cert-icon fit-content"></i> |
+      {{ props.cert.date }} •
+      <a target="_blank" :href="props.cert.credentialLink"
+        >Show Credential <i class="pi pi-arrow-up-right"></i>
+      </a>
+    </p>
+    <p class="cert-desc fit-content">{{ props.cert.description }}</p>
     <div class="pill-box">
-      <p class="pill" v-for="s in props.cert.skills">{{s}}</p>
+      <p class="pill fit-content" v-for="s in props.cert.skills">{{ s }}</p>
     </div>
   </div>
 </template>
@@ -26,7 +30,6 @@ const props = defineProps({
 <style>
 .cert-card {
   padding: 2em;
-  /* background-color: var(--color-dg); */
   background: linear-gradient(to top, var(--color-dark), var(--color-dg));
   height: 60%;
   width: 40%;
@@ -37,30 +40,13 @@ const props = defineProps({
   justify-content: flex-start;
   gap: 10px;
 
-  &:hover {
-    cursor: pointer;
-    transform: translateY(-5px);
-    box-shadow: var(--color-accent) 1px 1px 10px 3px;
-  }
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-/* .cert-img-box {
-  background-color: var(--color-dark);
-  height: 40px;
-  width: 15%;
-  align-self: flex-start;
-  border-radius: var(--radius-card);
-} */
-
-#cert-icon{
-  /* background-color: var(--color-dark); */
-  height: fit-content;
-  width: fit-content;
-  color:var(--color-mg);
+#cert-icon {
+  color: var(--color-mg);
 }
 
-.pill-box{
+.pill-box {
   height: 2em;
   width: 100%;
   max-width: 100%;
@@ -71,18 +57,13 @@ const props = defineProps({
   align-items: center;
   flex-wrap: wrap;
   gap: 7px;
-
 }
 
-.pill{
-  
+.pill {
   color: var(--color-accent);
   padding: 1%;
   font-size: 0.8em;
-  height: fit-content;
-  width: fit-content;
   text-wrap: nowrap;
-
   border-radius: 30px;
   border: solid 2px var(--color-accent);
 }
@@ -91,8 +72,6 @@ const props = defineProps({
 .cert-date,
 .cert-desc {
   color: var(--color-light);
-  height: fit-content;
-  width: fit-content;
   font-weight: 300;
 }
 
@@ -104,13 +83,13 @@ const props = defineProps({
   font-size: 0.9em;
   color: var(--color-mg);
 
-  a{
+  a {
     text-decoration: none;
     color: var(--color-mg);
-    &:hover{
+    &:hover {
       color: var(--color-accent);
     }
-    i{
+    i {
       font-size: 0.8em;
     }
   }

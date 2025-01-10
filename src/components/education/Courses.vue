@@ -13,10 +13,10 @@ const filteredCourses = courses.filter((course) => course.tag === props.tag);
 </script>
 <!-- BODY & STRUCTURE -->
 <template>
-  <h3 class="courses">Courses</h3>
+  <h3 class="courses fit-content">Courses</h3>
   <div class="course-box">
-    <div class="course-card" v-for="c in filteredCourses">
-      <a :href="c.courseURL" target="_blank" class="course-link">
+    <div class="course-card fit-content" v-for="c in filteredCourses">
+      <a :href="c.courseURL" target="_blank" class="course-link fit-content">
         <i :class="['course-icon', c.icon]"></i> &ThickSpace;{{ c.name }}</a
       >
     </div>
@@ -27,8 +27,7 @@ const filteredCourses = courses.filter((course) => course.tag === props.tag);
 .courses {
   align-self: center;
   margin: 5px 0 7px 0;
-  height: fit-content;
-  width: fit-content;
+
 }
 .course-box {
   max-height: 100%;
@@ -39,11 +38,10 @@ const filteredCourses = courses.filter((course) => course.tag === props.tag);
   align-items: flex-start;
   justify-content: flex-start;
   gap: 5px;
+  animation: slideDown 0.4s ease-in-out;
 }
 
 .course-card {
-  height: fit-content;
-  width: fit-content;
   display: flex;
   flex-direction: row;
   align-items: start;
@@ -54,11 +52,19 @@ const filteredCourses = courses.filter((course) => course.tag === props.tag);
 .course-link {
   color: var(--color-light);
   text-decoration: none;
-
-  height: fit-content;
-  width: fit-content;
   &:hover {
     color: var(--color-accent);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 </style>

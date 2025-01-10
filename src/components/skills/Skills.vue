@@ -14,14 +14,6 @@ import SkillsCard from './SkillsCard.vue';
 </template>
 <!-- STYLING -->
 <style >
-#skills{
-    /* background-color: var(--color-lg); */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-}
-
 .skills-box{
     height: 400px;
     width: 100%;

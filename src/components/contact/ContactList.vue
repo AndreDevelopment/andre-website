@@ -3,7 +3,7 @@
 <!-- BODY & STRUCTURE -->
 <template>
 
-  <div class="contact-list">
+  <div class="contact-list fit-content">
     <a href="mailto:andredsouza15@gmail.com" target="_blank" class="link-contact">
       <i class="icon-contact pi pi-envelope"></i>
       </a>
@@ -22,8 +22,6 @@
 <style>
 
 .contact-list{
-  width: fit-content;
-  height: fit-content;
   display: flex;
   flex-direction: row;
   justify-content: center;

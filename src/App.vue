@@ -10,6 +10,7 @@ import Certifications from "./components/certifications/Certifications.vue";
 import Contact from "./components/contact/Contact.vue";
 import anime from "animejs";
 import { onMounted, onBeforeMount, ref } from "vue";
+import { sectionsInfo, targetElements } from "./data/dataAnimations";
 
 const animations = [] as anime.AnimeInstance[];
 const prevSectionRect = ref(new DOMRect());
@@ -20,12 +21,19 @@ const initAnimations = () => {
     pushTitleAnimations(section);
   });
 
-  const skillSection = document.querySelector("div#skills") as HTMLElement;
-  pushSkillCardAnimations(skillSection);
-  const educationSection = document.querySelector("div#education") as HTMLElement;
-  pushEducationCardAnimations(educationSection)
-  const certSection = document.querySelector("div#certifications") as HTMLElement;
-  pushCertCardAnimations(certSection);
+  sectionsInfo.forEach((secInfo) => {
+    const section = document.querySelector(secInfo.name) as HTMLElement;
+    initCardFadeIn(
+      section,
+      secInfo.card.name,
+      secInfo.card.duration,
+      secInfo.card.delay,
+      secInfo.card.stagger
+    );
+  });
+
+  initWorkAnimations(document.querySelector("div#work-experience")!);
+  initProjectAnimation(document.querySelector("div#projects")!);
 };
 
 const pushTitleAnimations = (section: Element) => {
@@ -49,54 +57,62 @@ const pushTitleAnimations = (section: Element) => {
   } //end if
 }; //end of pushTitle
 
-const pushSkillCardAnimations = (section: Element) => {
-  const skillCards = section.querySelectorAll(".skill-card");
+const initCardFadeIn = (
+  section: Element,
+  elementClass: string,
+  duration: number,
+  delay: number,
+  stagger: number
+) => {
+  const cards = section.querySelectorAll(elementClass);
 
-  const skillAnimations = anime({
-    targets: skillCards,
+  const cardAnimations = anime({
+    targets: cards!,
     opacity: [0, 1],
     easing: "easeInOutExpo",
-    duration: 1000,
+    duration: duration,
     autoplay: false,
     direction: "normal",
-    delay: anime.stagger(200),
+    delay: anime.stagger(stagger, { start: delay }),
   });
 
-  animations.push(skillAnimations);
+  animations.push(cardAnimations);
 };
 
-const pushEducationCardAnimations = (section: Element) => {
-  const educationCards = section.querySelectorAll(".education-card");
+const initWorkAnimations = (section: Element) => {
+  const works = [".job-info-box", ".job-select-box"];
+  const direction = ref(-10);
+  works.forEach((w) => {
+    const job = section.querySelector(w);
+    const jobAnimation = anime({
+      targets: job,
+      translateX: [0, direction.value],
+      opacity: [0, 1],
+      easing: "easeInOutExpo",
+      duration: 1000,
 
-  const educationCardsAnimations = anime({
-    targets: educationCards,
-    opacity: [0, 1],
-    easing: "easeInOutExpo",
-    duration: 1000,
-    autoplay: false,
-    direction: "normal",
-    delay: anime.stagger(200 ,{start:200}),
+      autoplay: false,
+      direction: "normal",
+    });
+
+    animations.push(jobAnimation);
+    direction.value = -direction.value;
   });
-
-  animations.push(educationCardsAnimations);
 };
 
+const initProjectAnimation = (section: Element) => {
+  const projectCard = section.querySelector(".carousel");
 
-
-const pushCertCardAnimations = (section: Element) => {
-  const certCards = section.querySelectorAll(".cert-card");
-
-  const certCardsAnimations = anime({
-    targets: certCards,
+  const projectAnimation = anime({
+    targets: projectCard,
+    translateX: ["-25%", "0%"],
     opacity: [0, 1],
+    duration: 1500,
+    autoplay:false,
     easing: "easeInOutExpo",
-    duration: 1000,
-    autoplay: false,
-    direction: "normal",
-    delay: anime.stagger(200 ,{start:200}),
   });
 
-  animations.push(certCardsAnimations);
+  animations.push(projectAnimation);
 };
 
 const handleScroll = () => {
@@ -111,23 +127,15 @@ const handleScroll = () => {
 
     // Check if the section is entering the viewport from above OR is visible and user is scrolling down
     if (
-      (!isSectionVisible &&
-        prevSectionRect.value &&
-        prevSectionRect.value.bottom < rect.top) ||
-      (isSectionVisible &&
-        prevSectionRect.value &&
-        prevSectionRect.value.top < rect.top)
+      isSectionVisible &&
+      prevSectionRect.value &&
+      prevSectionRect.value.top < rect.top
     ) {
       animations.forEach((animation) => {
         const targetElement = animation.animatables[0].target;
-
-        if (
-          targetElement === section.querySelector(".title") ||
-          targetElement === section.querySelector(".skill-card") ||
-          targetElement === section.querySelector(".education-card")|| 
-          targetElement === section.querySelector(".cert-card")
-        ) {
-          //Check to see if the animation has played already or not (Don't want to loop the animation) 
+        const targets = targetElements(section);
+        if (targets.includes(targetElement)) {
+          //Check to see if the animation has played already or not (Don't want to loop the animation)
           if (!animation.completed && isSectionVisible) {
             animation.play();
           }
@@ -192,10 +200,19 @@ onMounted(() => {
   font-family: "Lexend", serif;
   font-weight: 300;
   font-style: normal;
-
   height: 100%;
 }
+.center-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
+.fit-content {
+  height: fit-content;
+  width: fit-content;
+}
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -213,20 +230,36 @@ onMounted(() => {
   background: #555;
 }
 
+.card-hover {
+  &:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+    box-shadow: var(--color-accent) 1px 1px 10px 3px;
+  }
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.wrapper {
+  position: relative;
+  height: 80%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .section {
   min-height: 100vh;
   padding-top: 1em;
   background-color: var(--color-dark);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 1em;
 }
-/* .section h1 {
-  opacity: 0;
-  transform: translateY(50px);
-} */
+
 .title {
   height: fit-content;
   width: fit-content;

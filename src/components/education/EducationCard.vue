@@ -18,19 +18,20 @@ const toggleShowCourse = () => {
 </script>
 <!-- BODY & STRUCTURE -->
 <template>
-  <div class="education-card">
+  <div class="education-card card-hover">
     <div class="edu-stats">
-      <h2 class="degree">{{ props.instituion.degreeType }}</h2>
-      <h4 class="school">{{ props.instituion.institution }}</h4>
-      <h3 class="field">{{ props.instituion.fieldName }}</h3>
+      <h2 class="degree fit-content">{{ props.instituion.degreeType }}</h2>
+      <h4 class="school fit-content">{{ props.instituion.institution }}</h4>
+      <h3 class="field fit-content">{{ props.instituion.fieldName }}</h3>
     </div>
     <button class="btn-courses" @click="toggleShowCourse()">
       View Relevant Courses
       <i
         :class="[
-          'view-chev-icon',
+          showCourses? 'flip-up':'flip-down',
           'pi',
-          showCourses ? 'pi-angle-double-up' : 'pi-angle-double-down',
+          'pi-angle-double-down',
+          
         ]"
       ></i>
     </button>
@@ -41,21 +42,14 @@ const toggleShowCourse = () => {
 <style>
 .education-card {
   padding: 1em;
-  height:fit-content;
+  height: fit-content;
   max-height: 160%;
   width: 80%;
   border-radius: 10px;
   color: var(--color-light);
-  background: linear-gradient(to top left,var(--color-dark),var(--color-dg));
+  background: linear-gradient(to top left, var(--color-dark), var(--color-dg));
   display: flex;
   flex-direction: column;
-
-  &:hover {
-    cursor: pointer;
-    transform: translateY(-5px);
-    box-shadow: var(--color-accent) 1px 1px 10px 3px;
-  }
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 .edu-stats {
   display: flex;
@@ -67,13 +61,6 @@ const toggleShowCourse = () => {
   height: 80px;
   width: 80px;
   object-fit: contain;
-}
-
-.degree,
-.field,
-.school {
-  height: fit-content;
-  width: fit-content;
 }
 
 .degree {
@@ -90,7 +77,15 @@ const toggleShowCourse = () => {
   font-size: 0.8em;
   color: var(--color-mg);
 }
+.flip-up{
+  transition: transform 0.3s ease-in-out;
+  transform: rotate(180deg);
+}
 
+.flip-down{
+  transition: transform 0.3s ease-in-out;
+
+}
 .btn-courses {
   margin-top: 1em;
   width: fit-content;
@@ -101,4 +96,6 @@ const toggleShowCourse = () => {
     cursor: pointer;
   }
 }
+
+
 </style>

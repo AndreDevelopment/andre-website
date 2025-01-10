@@ -18,18 +18,14 @@ const props = defineProps({
   <div :class="['select-card', { 'show-select-card': selected }]">
     <img :src="props.work.companyImgURL" alt="No comp" class="company-img" />
     <div class="select-text-box">
-      <h2 class="role-title">{{ props.work.jobTitle }}</h2>
-      <p class="company-s">{{ props.work.company }}</p>
+      <h2 class="role-title fit-content">{{ props.work.jobTitle }}</h2>
+      <p class="company-s fit-content">{{ props.work.company }}</p>
     </div>
   </div>
 </template>
 <!-- STYLING -->
 <style>
-.role-title,
-.company-s {
-  height: fit-content;
-  width: fit-content;
-}
+
 .company-s {
   color: var(--color-mg);
 }
@@ -83,7 +79,6 @@ const props = defineProps({
 }
 
 .show-select-card {
-  
   background: linear-gradient(to left, var(--color-dark), var(--color-dg));
   .role-title {
     color: var(--color-accent);

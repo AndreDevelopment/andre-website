@@ -58,15 +58,8 @@ const handleSelectSlide = (projectIdx: number) => {
 <!-- STYLING -->
 <style>
 
-
-/* #projects {
-
-  gap: 10px;
-  background-color: var(--color-lg);
-} */
-
 .carousel {
-
+  overflow-x: hidden;
   height: inherit;
   width: 100%;
   display: flex;

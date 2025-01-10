@@ -1,17 +1,17 @@
 <!-- SCRIPTING & FUNCTIONS -->
 <script setup lang="ts">
-import ContactList from './ContactList.vue';
+import ContactList from "./ContactList.vue";
 
 const fromFields = ["Name", "Email"];
 </script>
 <!-- BODY & STRUCTURE -->
 <template>
-  <form class="form-box">
-    <ContactList/>
+  <form class="form-box card-hover center-col">
+    <ContactList />
 
     <div class="name-mail-box">
       <div class="form-group" v-for="f in fromFields">
-        <label class="lbl-detail" :for="f.toLocaleLowerCase()"
+        <label class="lbl-detail fit-content" :for="f.toLocaleLowerCase()"
           ><i :class="['pi', f === 'Name' ? 'pi-user' : 'pi-envelope']"></i>
           {{ f }}</label
         >
@@ -24,9 +24,9 @@ const fromFields = ["Name", "Email"];
         />
       </div>
     </div>
-    <div class="form-group-msg">
-      <div class="center-msg">
-        <label for="message" class="lbl-msg"
+    <div class="form-group-msg center-col">
+      <div class="center-msg center-col">
+        <label for="message" class="lbl-msg fit-content"
           ><i class="pi pi-pen-to-square"></i> Message</label
         >
         <textarea id="message" name="message" rows="5" required></textarea>
@@ -42,16 +42,10 @@ const fromFields = ["Name", "Email"];
 .form-box {
   color: var(--color-light);
   border-radius: var(--radius-card);
-  gap:10px;
-  background:linear-gradient(to bottom, var(--color-dg),var(--color-dark)) ;
+  gap: 10px;
+  background: linear-gradient(to bottom, var(--color-dg), var(--color-dark));
   height: 100%;
   width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  
 }
 .name-mail-box {
   height: 25%;
@@ -62,23 +56,14 @@ const fromFields = ["Name", "Email"];
   justify-content: space-evenly;
 }
 
-
 .form-group-msg {
   width: 100%;
   height: 40%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   gap: 5px;
-
 }
-.center-msg{
+.center-msg {
   width: 60%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap:5px;
+  gap: 5px;
 }
 .form-group {
   display: flex;
@@ -90,22 +75,16 @@ const fromFields = ["Name", "Email"];
   width: 40%;
 }
 
-
-
 .lbl-msg,
-.lbl-detail,
-.send-head {
-  width: fit-content;
-  height: fit-content;
+.lbl-detail {
   color: var(--color-light);
 }
-.lbl-msg{
+.lbl-msg {
   align-self: flex-start;
 }
 
 .txt-detail,
 #message {
-  /* border: var(--color-dark) 2px solid; */
   border: none;
   color: var(--color-light);
   background-color: var(--color-dg);
@@ -119,12 +98,10 @@ const fromFields = ["Name", "Email"];
   width: 100%;
   height: 30%;
 }
-.send-head{
+.send-head {
   margin-top: 1em;
 }
 .btn-submit {
-
   padding: 1%;
- 
 }
 </style>

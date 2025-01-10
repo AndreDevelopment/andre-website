@@ -52,6 +52,7 @@ const getCodeIcon = (icon: string) => {
 <!-- STYLING -->
 <style>
 .project-card {
+  
   width: 100%;
   height: 100%;
   position: absolute;
@@ -67,6 +68,8 @@ const getCodeIcon = (icon: string) => {
   flex-direction: row;
   opacity: 0;
   z-index: -1;
+  transform: translateX(5%);
+  transition: all 0.7s ease-in-out;
 }
 
 .project-stats {
@@ -161,5 +164,6 @@ const getCodeIcon = (icon: string) => {
 .show {
   opacity: 1;
   z-index: 1;
+  transform: translateX(0);
 }
 </style>

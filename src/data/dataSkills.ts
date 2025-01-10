@@ -29,6 +29,6 @@ export const skillsData: SkillsInformation[] = [
   {
     name: "Soft Skills",
     icon: "pi pi-pencil",
-    skills: ['Communication', 'Teamwork', 'Problem-solving', 'Time Management'],
+    skills: ['Communication', 'Teamwork', 'Problem-solving', 'Time Management','Detail Oriented','Organized'],
   },
 ];

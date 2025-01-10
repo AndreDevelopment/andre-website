@@ -32,6 +32,10 @@ const handleWorkClick=(workIdx: number)=>{
 <!-- STYLING -->
 <style>
 
+#work-experience{
+  overflow-x: hidden;
+}
+
 #work-wrapper {
   flex-direction: row;
 }

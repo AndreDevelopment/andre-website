@@ -31,6 +31,9 @@ const initAnimations = () => {
       secInfo.card.stagger
     );
   });
+
+  initWorkAnimations(document.querySelector("div#work-experience")!);
+  initProjectAnimation(document.querySelector("div#projects")!);
 };
 
 const pushTitleAnimations = (section: Element) => {
@@ -74,6 +77,42 @@ const initCardFadeIn = (
   });
 
   animations.push(cardAnimations);
+};
+
+const initWorkAnimations = (section: Element) => {
+  const works = [".job-info-box", ".job-select-box"];
+  const direction = ref(-10);
+  works.forEach((w) => {
+    const job = section.querySelector(w);
+    const jobAnimation = anime({
+      targets: job,
+      translateX: [0, direction.value],
+      opacity: [0, 1],
+      easing: "easeInOutExpo",
+      duration: 1000,
+
+      autoplay: false,
+      direction: "normal",
+    });
+
+    animations.push(jobAnimation);
+    direction.value = -direction.value;
+  });
+};
+
+const initProjectAnimation = (section: Element) => {
+  const projectCard = section.querySelector(".carousel");
+
+  const projectAnimation = anime({
+    targets: projectCard,
+    translateX: ["-25%", "0%"],
+    opacity: [0, 1],
+    duration: 1500,
+    autoplay:false,
+    easing: "easeInOutExpo",
+  });
+
+  animations.push(projectAnimation);
 };
 
 const handleScroll = () => {
@@ -161,17 +200,16 @@ onMounted(() => {
   font-family: "Lexend", serif;
   font-weight: 300;
   font-style: normal;
-
   height: 100%;
 }
-.center-col{
+.center-col {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.fit-content{
+.fit-content {
   height: fit-content;
   width: fit-content;
 }
@@ -192,7 +230,7 @@ onMounted(() => {
   background: #555;
 }
 
-.card-hover{
+.card-hover {
   &:hover {
     cursor: pointer;
     transform: translateY(-5px);
@@ -273,8 +311,4 @@ onMounted(() => {
     transition: all 0.4s ease;
   }
 }
-
-
-
-
 </style>

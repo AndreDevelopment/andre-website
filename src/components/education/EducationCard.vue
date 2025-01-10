@@ -28,9 +28,10 @@ const toggleShowCourse = () => {
       View Relevant Courses
       <i
         :class="[
-          'view-chev-icon',
+          showCourses? 'flip-up':'flip-down',
           'pi',
-          showCourses ? 'pi-angle-double-up' : 'pi-angle-double-down',
+          'pi-angle-double-down',
+          
         ]"
       ></i>
     </button>
@@ -41,12 +42,12 @@ const toggleShowCourse = () => {
 <style>
 .education-card {
   padding: 1em;
-  height:fit-content;
+  height: fit-content;
   max-height: 160%;
   width: 80%;
   border-radius: 10px;
   color: var(--color-light);
-  background: linear-gradient(to top left,var(--color-dark),var(--color-dg));
+  background: linear-gradient(to top left, var(--color-dark), var(--color-dg));
   display: flex;
   flex-direction: column;
 }
@@ -76,7 +77,15 @@ const toggleShowCourse = () => {
   font-size: 0.8em;
   color: var(--color-mg);
 }
+.flip-up{
+  transition: transform 0.3s ease-in-out;
+  transform: rotate(180deg);
+}
 
+.flip-down{
+  transition: transform 0.3s ease-in-out;
+
+}
 .btn-courses {
   margin-top: 1em;
   width: fit-content;
@@ -87,4 +96,6 @@ const toggleShowCourse = () => {
     cursor: pointer;
   }
 }
+
+
 </style>

@@ -38,6 +38,7 @@ const filteredCourses = courses.filter((course) => course.tag === props.tag);
   align-items: flex-start;
   justify-content: flex-start;
   gap: 5px;
+  animation: slideDown 0.4s ease-in-out;
 }
 
 .course-card {
@@ -53,6 +54,17 @@ const filteredCourses = courses.filter((course) => course.tag === props.tag);
   text-decoration: none;
   &:hover {
     color: var(--color-accent);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 </style>

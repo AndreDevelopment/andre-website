@@ -19,11 +19,11 @@ const handleWorkClick=(workIdx: number)=>{
 <template>
   <div class="section" id="work-experience">
     <h1 class="title">Work Experience</h1>
-    <div class="work-wrapper">
-      <div class="job-select-box">
+    <div class="wrapper" id="work-wrapper">
+      <div class="job-select-box center-col">
         <WorkSelectCard v-for="w,index in workData" :work="w" @click="handleWorkClick(index)" :selected="showWork(index)" />
       </div>
-      <div class="job-info-box">
+      <div class="job-info-box center-col">
         <WorkInfoCard v-for="w,index in workData" :work="w"  :selected="showWork(index)"/>
       </div>
     </div>
@@ -31,40 +31,21 @@ const handleWorkClick=(workIdx: number)=>{
 </template>
 <!-- STYLING -->
 <style>
-#work-experience {
 
-  justify-content: start;
-  
+#work-wrapper {
+  flex-direction: row;
 }
 
-.work-wrapper {
-  height: 80%;
-  width: 100%;
+.job-select-box, .job-info-box{
+  height: 100%;
   position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  
+  justify-content: flex-start;
 }
 .job-select-box {
-  height: 100%;
   width: 40%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
   gap: 10px;
 }
 .job-info-box {
-  height: 100%;
   width: 60%;
-
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
 }
 </style>

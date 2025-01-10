@@ -18,7 +18,7 @@ const props = defineProps({
     </div>
     <div class="line-box">
       <div class="dotted-line"></div>
-      <div class="school-img">
+      <div class="school-img center-col">
         <img
           :src="props.instituion.logoURL"
           alt="no logo"
@@ -94,9 +94,6 @@ const props = defineProps({
   border-radius: 50%;
   background-color: var(--color-dark);
   border: 2px solid var(--color-accent);
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   &:hover {
     cursor: pointer;

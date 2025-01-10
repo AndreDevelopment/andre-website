@@ -18,11 +18,11 @@ const toggleShowCourse = () => {
 </script>
 <!-- BODY & STRUCTURE -->
 <template>
-  <div class="education-card">
+  <div class="education-card card-hover">
     <div class="edu-stats">
-      <h2 class="degree">{{ props.instituion.degreeType }}</h2>
-      <h4 class="school">{{ props.instituion.institution }}</h4>
-      <h3 class="field">{{ props.instituion.fieldName }}</h3>
+      <h2 class="degree fit-content">{{ props.instituion.degreeType }}</h2>
+      <h4 class="school fit-content">{{ props.instituion.institution }}</h4>
+      <h3 class="field fit-content">{{ props.instituion.fieldName }}</h3>
     </div>
     <button class="btn-courses" @click="toggleShowCourse()">
       View Relevant Courses
@@ -49,13 +49,6 @@ const toggleShowCourse = () => {
   background: linear-gradient(to top left,var(--color-dark),var(--color-dg));
   display: flex;
   flex-direction: column;
-
-  &:hover {
-    cursor: pointer;
-    transform: translateY(-5px);
-    box-shadow: var(--color-accent) 1px 1px 10px 3px;
-  }
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 .edu-stats {
   display: flex;
@@ -67,13 +60,6 @@ const toggleShowCourse = () => {
   height: 80px;
   width: 80px;
   object-fit: contain;
-}
-
-.degree,
-.field,
-.school {
-  height: fit-content;
-  width: fit-content;
 }
 
 .degree {

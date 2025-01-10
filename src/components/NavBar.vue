@@ -7,7 +7,15 @@ import ContactList from "./contact/ContactList.vue";
 interface CustomScrollIntoViewOptions extends ScrollIntoViewOptions {
   top?: number;
 }
-const navItems = ["Home", "Work Experience",  "Education", "Projects", "Skills","Certifications","Contact" ];
+const navItems = [
+  "Home",
+  "Work Experience",
+  "Education",
+  "Projects",
+  "Skills",
+  "Certifications",
+  "Contact",
+];
 const activeSection = ref("home");
 const scrollOffset = -80;
 
@@ -41,12 +49,14 @@ const handleScroll = () => {
   const sections = document.querySelectorAll("div.section");
   sections.forEach((section) => {
     const rect = section.getBoundingClientRect();
-    if (rect.top + scrollOffset < window.innerHeight && rect.bottom + scrollOffset > 0) {
+    if (
+      rect.top + scrollOffset < window.innerHeight &&
+      rect.bottom + scrollOffset > 0
+    ) {
       activeSection.value = section.id;
     }
   });
 };
-
 
 const isSectionActive = (sectionId: string) => {
   sectionId = convertSectionId(sectionId);
@@ -57,7 +67,7 @@ const isSectionActive = (sectionId: string) => {
 <template>
   <div id="nav-bar-box">
     <div class="nav-zones" id="left-nav">
-      <ContactList/>
+      <ContactList />
     </div>
     <div class="nav-zones" id="right-nav">
       <ul id="nav-list">
@@ -137,24 +147,21 @@ const isSectionActive = (sectionId: string) => {
   transform: scale(1);
 }
 
-
-
-#right-nav{
+#right-nav {
   width: 60%;
   justify-self: flex-start;
- 
+
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
 }
 
-#left-nav{
+#left-nav {
   padding-left: 2em;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-width: 40%;
-
+  width: 40%;
 }
 </style>

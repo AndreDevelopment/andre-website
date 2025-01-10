@@ -21,11 +21,16 @@ const initAnimations = () => {
     pushTitleAnimations(section);
   });
 
-  sectionsInfo.forEach(secInfo =>{
+  sectionsInfo.forEach((secInfo) => {
     const section = document.querySelector(secInfo.name) as HTMLElement;
-    initCardFadeIn(section,secInfo.card.name,secInfo.card.duration,secInfo.card.delay,secInfo.card.stagger)
-  })
-
+    initCardFadeIn(
+      section,
+      secInfo.card.name,
+      secInfo.card.duration,
+      secInfo.card.delay,
+      secInfo.card.stagger
+    );
+  });
 };
 
 const pushTitleAnimations = (section: Element) => {
@@ -71,8 +76,6 @@ const initCardFadeIn = (
   animations.push(cardAnimations);
 };
 
-
-
 const handleScroll = () => {
   const scrollOffset = 80;
   const sections = document.querySelectorAll("div.section");
@@ -92,9 +95,7 @@ const handleScroll = () => {
       animations.forEach((animation) => {
         const targetElement = animation.animatables[0].target;
         const targets = targetElements(section);
-        if (
-           targets.includes(targetElement)
-        ) {
+        if (targets.includes(targetElement)) {
           //Check to see if the animation has played already or not (Don't want to loop the animation)
           if (!animation.completed && isSectionVisible) {
             animation.play();
@@ -163,7 +164,17 @@ onMounted(() => {
 
   height: 100%;
 }
+.center-col{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
+.fit-content{
+  height: fit-content;
+  width: fit-content;
+}
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -181,20 +192,36 @@ onMounted(() => {
   background: #555;
 }
 
+.card-hover{
+  &:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+    box-shadow: var(--color-accent) 1px 1px 10px 3px;
+  }
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.wrapper {
+  position: relative;
+  height: 80%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .section {
   min-height: 100vh;
   padding-top: 1em;
   background-color: var(--color-dark);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 1em;
 }
-/* .section h1 {
-  opacity: 0;
-  transform: translateY(50px);
-} */
+
 .title {
   height: fit-content;
   width: fit-content;
@@ -246,4 +273,8 @@ onMounted(() => {
     transition: all 0.4s ease;
   }
 }
+
+
+
+
 </style>

@@ -59,7 +59,7 @@ const handleSelectSlide = (projectIdx: number) => {
 <style>
 
 .carousel {
-
+  overflow-x: hidden;
   height: inherit;
   width: 100%;
   display: flex;

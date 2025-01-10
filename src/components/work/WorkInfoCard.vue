@@ -57,11 +57,15 @@ const props = defineProps({
   background: linear-gradient(to top right, var(--color-dark), var(--color-dg));
   opacity: 0;
   z-index: -1;
+  transform: translateX(5%);
+
+  transition: all 0.5s ease-in-out;
 }
 
 .show-job {
   opacity: 1;
   z-index: 1;
+  transform: translateX(0);
 }
 
 .duties-list {

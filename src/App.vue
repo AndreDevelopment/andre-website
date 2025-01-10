@@ -10,6 +10,7 @@ import Certifications from "./components/certifications/Certifications.vue";
 import Contact from "./components/contact/Contact.vue";
 import anime from "animejs";
 import { onMounted, onBeforeMount, ref } from "vue";
+import { sectionsInfo } from "./data/dataAnimations";
 
 const animations = [] as anime.AnimeInstance[];
 const prevSectionRect = ref(new DOMRect());
@@ -20,12 +21,11 @@ const initAnimations = () => {
     pushTitleAnimations(section);
   });
 
-  const skillSection = document.querySelector("div#skills") as HTMLElement;
-  pushSkillCardAnimations(skillSection);
-  const educationSection = document.querySelector("div#education") as HTMLElement;
-  pushEducationCardAnimations(educationSection)
-  const certSection = document.querySelector("div#certifications") as HTMLElement;
-  pushCertCardAnimations(certSection);
+  sectionsInfo.forEach(secInfo =>{
+    const section = document.querySelector(secInfo.name) as HTMLElement;
+    initCardFadeIn(section,secInfo.card.name,secInfo.card.duration,secInfo.card.delay,secInfo.card.stagger)
+  })
+
 };
 
 const pushTitleAnimations = (section: Element) => {
@@ -49,55 +49,29 @@ const pushTitleAnimations = (section: Element) => {
   } //end if
 }; //end of pushTitle
 
-const pushSkillCardAnimations = (section: Element) => {
-  const skillCards = section.querySelectorAll(".skill-card");
+const initCardFadeIn = (
+  section: Element,
+  elementClass: string,
+  duration: number,
+  delay: number,
+  stagger: number
+) => {
+  const cards = section.querySelectorAll(elementClass);
 
-  const skillAnimations = anime({
-    targets: skillCards,
+  const cardAnimations = anime({
+    targets: cards!,
     opacity: [0, 1],
     easing: "easeInOutExpo",
-    duration: 1000,
+    duration: duration,
     autoplay: false,
     direction: "normal",
-    delay: anime.stagger(200),
+    delay: anime.stagger(stagger, { start: delay }),
   });
 
-  animations.push(skillAnimations);
-};
-
-const pushEducationCardAnimations = (section: Element) => {
-  const educationCards = section.querySelectorAll(".education-card");
-
-  const educationCardsAnimations = anime({
-    targets: educationCards,
-    opacity: [0, 1],
-    easing: "easeInOutExpo",
-    duration: 1000,
-    autoplay: false,
-    direction: "normal",
-    delay: anime.stagger(200 ,{start:200}),
-  });
-
-  animations.push(educationCardsAnimations);
+  animations.push(cardAnimations);
 };
 
 
-
-const pushCertCardAnimations = (section: Element) => {
-  const certCards = section.querySelectorAll(".cert-card");
-
-  const certCardsAnimations = anime({
-    targets: certCards,
-    opacity: [0, 1],
-    easing: "easeInOutExpo",
-    duration: 1000,
-    autoplay: false,
-    direction: "normal",
-    delay: anime.stagger(200 ,{start:200}),
-  });
-
-  animations.push(certCardsAnimations);
-};
 
 const handleScroll = () => {
   const scrollOffset = 80;
@@ -111,12 +85,9 @@ const handleScroll = () => {
 
     // Check if the section is entering the viewport from above OR is visible and user is scrolling down
     if (
-      (!isSectionVisible &&
-        prevSectionRect.value &&
-        prevSectionRect.value.bottom < rect.top) ||
-      (isSectionVisible &&
-        prevSectionRect.value &&
-        prevSectionRect.value.top < rect.top)
+      isSectionVisible &&
+      prevSectionRect.value &&
+      prevSectionRect.value.top < rect.top
     ) {
       animations.forEach((animation) => {
         const targetElement = animation.animatables[0].target;
@@ -124,10 +95,10 @@ const handleScroll = () => {
         if (
           targetElement === section.querySelector(".title") ||
           targetElement === section.querySelector(".skill-card") ||
-          targetElement === section.querySelector(".education-card")|| 
+          targetElement === section.querySelector(".education-card") ||
           targetElement === section.querySelector(".cert-card")
         ) {
-          //Check to see if the animation has played already or not (Don't want to loop the animation) 
+          //Check to see if the animation has played already or not (Don't want to loop the animation)
           if (!animation.completed && isSectionVisible) {
             animation.play();
           }

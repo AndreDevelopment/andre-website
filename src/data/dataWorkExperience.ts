@@ -6,6 +6,8 @@ export interface WorkInformation {
   duties: string[];
 }
 
+export const keyWords = ['Manufacturing', 'Execution', 'System'];
+
 export const workData: WorkInformation[] = [
   {
     jobTitle: "Junior (MES) Developer",

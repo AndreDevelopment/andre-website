@@ -61,11 +61,12 @@ const props = defineProps({
 
 .pill {
   color: var(--color-accent);
+  background-color: var(--color-accent-g);
   padding: 1%;
   font-size: 0.8em;
   text-wrap: nowrap;
   border-radius: 30px;
-  border: solid 2px var(--color-accent);
+  /* border: solid 2px var(--color-accent); */
 }
 
 .cert-name,

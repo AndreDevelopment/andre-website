@@ -46,7 +46,6 @@ const getCodeIcon = (icon: string) => {
       class="project-image"
       :style="{ backgroundImage: `url(${props.project.imageURL})` }"
     ></div>
-    <!-- <img class="project-image" :src="props.project.imageURL" /> -->
   </div>
 </template>
 <!-- STYLING -->

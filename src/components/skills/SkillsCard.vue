@@ -13,12 +13,10 @@ const props = defineProps({
 <template>
   <div class="skill-card card-hover">
     <i :class="['skill-icon','fit-content', props.skill.icon]"></i>
-    <!-- <div class="skills-text"> -->
       <h3 class="skill-title">{{ props.skill.name }}</h3>
       <div class="skills-list">
         <p class="skill-items fit-content" v-for="s in skill.skills">{{ s }}</p>
       </div>
-    <!-- </div> -->
   </div>
 </template>
 <!-- STYLING -->

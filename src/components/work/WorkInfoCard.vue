@@ -1,7 +1,7 @@
 <!-- SCRIPTING & FUNCTIONS -->
 <script setup lang="ts">
 import type { WorkInformation } from "../../data/dataWorkExperience";
-
+import { keyWords } from "../../data/dataWorkExperience";
 const props = defineProps({
   work: {
     type: Object as () => WorkInformation,
@@ -12,6 +12,16 @@ const props = defineProps({
     required: true,
   },
 });
+
+const boldKeywords = (sentence: string) => {
+  for (const keyword of keyWords) {
+    sentence = sentence.replace(
+      new RegExp(`\\b${keyword}\\b`, "gi"),
+      `<b>${keyword}</b>`
+    );
+  }
+  return sentence;
+};
 </script>
 <!-- BODY & STRUCTURE -->
 <template>

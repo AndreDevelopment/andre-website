@@ -18,7 +18,7 @@ const toggleShowCourse = () => {
 </script>
 <!-- BODY & STRUCTURE -->
 <template>
-  <div id="education-card">
+  <div class="education-card">
     <div class="edu-stats">
       <h2 class="degree">{{ props.instituion.degreeType }}</h2>
       <h4 class="school">{{ props.instituion.institution }}</h4>
@@ -39,7 +39,7 @@ const toggleShowCourse = () => {
 </template>
 <!-- STYLING -->
 <style>
-#education-card {
+.education-card {
   padding: 1em;
   height:fit-content;
   max-height: 160%;

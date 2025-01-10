@@ -14,35 +14,93 @@ import { onMounted, onBeforeMount, ref } from "vue";
 const animations = [] as anime.AnimeInstance[];
 const prevSectionRect = ref(new DOMRect());
 
-
 const initAnimations = () => {
-  const sections = document.querySelectorAll("div.section") ;
+  const sections = document.querySelectorAll("div.section");
   sections.forEach((section) => {
-
-    const title = section.querySelector(".title")as HTMLElement;
-    if (title) {
-      animations.push(
-        anime({
-          targets: title!,
-          opacity: [0, 1],
-          translateY: [50, 0],
-          duration: 800,
-          easing: "easeInOutExpo",
-          autoplay: false,
-          begin: () => {},
-          direction: 'normal', 
-          complete: () => {
-            title.dataset.animated = 'true'; 
-          }
-        })
-      );
-    }
+    pushTitleAnimations(section);
   });
 
-  console.log(animations)
+  const skillSection = document.querySelector("div#skills") as HTMLElement;
+  pushSkillCardAnimations(skillSection);
+  const educationSection = document.querySelector("div#education") as HTMLElement;
+  pushEducationCardAnimations(educationSection)
+  const certSection = document.querySelector("div#certifications") as HTMLElement;
+  pushCertCardAnimations(certSection);
 };
+
+const pushTitleAnimations = (section: Element) => {
+  const title = section.querySelector(".title") as HTMLElement;
+  if (title) {
+    animations.push(
+      anime({
+        targets: title!,
+        opacity: [0, 1],
+        translateY: [50, 0],
+        duration: 800,
+        easing: "easeInOutExpo",
+        autoplay: false,
+        begin: () => {},
+        direction: "normal",
+        complete: () => {
+          title.dataset.animated = "true";
+        },
+      })
+    );
+  } //end if
+}; //end of pushTitle
+
+const pushSkillCardAnimations = (section: Element) => {
+  const skillCards = section.querySelectorAll(".skill-card");
+
+  const skillAnimations = anime({
+    targets: skillCards,
+    opacity: [0, 1],
+    easing: "easeInOutExpo",
+    duration: 1000,
+    autoplay: false,
+    direction: "normal",
+    delay: anime.stagger(200),
+  });
+
+  animations.push(skillAnimations);
+};
+
+const pushEducationCardAnimations = (section: Element) => {
+  const educationCards = section.querySelectorAll(".education-card");
+
+  const educationCardsAnimations = anime({
+    targets: educationCards,
+    opacity: [0, 1],
+    easing: "easeInOutExpo",
+    duration: 1000,
+    autoplay: false,
+    direction: "normal",
+    delay: anime.stagger(200 ,{start:200}),
+  });
+
+  animations.push(educationCardsAnimations);
+};
+
+
+
+const pushCertCardAnimations = (section: Element) => {
+  const certCards = section.querySelectorAll(".cert-card");
+
+  const certCardsAnimations = anime({
+    targets: certCards,
+    opacity: [0, 1],
+    easing: "easeInOutExpo",
+    duration: 1000,
+    autoplay: false,
+    direction: "normal",
+    delay: anime.stagger(200 ,{start:200}),
+  });
+
+  animations.push(certCardsAnimations);
+};
+
 const handleScroll = () => {
-  const scrollOffset = 80; 
+  const scrollOffset = 80;
   const sections = document.querySelectorAll("div.section");
 
   sections.forEach((section) => {
@@ -53,18 +111,26 @@ const handleScroll = () => {
 
     // Check if the section is entering the viewport from above OR is visible and user is scrolling down
     if (
-      (!isSectionVisible && prevSectionRect.value && prevSectionRect.value.bottom < rect.top) ||
-      (isSectionVisible && prevSectionRect.value && prevSectionRect.value.top < rect.top)
+      (!isSectionVisible &&
+        prevSectionRect.value &&
+        prevSectionRect.value.bottom < rect.top) ||
+      (isSectionVisible &&
+        prevSectionRect.value &&
+        prevSectionRect.value.top < rect.top)
     ) {
       animations.forEach((animation) => {
         const targetElement = animation.animatables[0].target;
 
-        if (targetElement === section.querySelector(".title")) {
-          //Check to see if the animation has played already or not (Don't want to loop the animation)
-          if (!animation.completed && isSectionVisible){
+        if (
+          targetElement === section.querySelector(".title") ||
+          targetElement === section.querySelector(".skill-card") ||
+          targetElement === section.querySelector(".education-card")|| 
+          targetElement === section.querySelector(".cert-card")
+        ) {
+          //Check to see if the animation has played already or not (Don't want to loop the animation) 
+          if (!animation.completed && isSectionVisible) {
             animation.play();
           }
-            
         }
       });
     }
@@ -73,7 +139,6 @@ const handleScroll = () => {
   });
 };
 
-
 onBeforeMount(() => {
   window.removeEventListener("scroll", handleScroll);
 });
@@ -81,7 +146,6 @@ onBeforeMount(() => {
 onMounted(() => {
   window.addEventListener("scroll", handleScroll);
   initAnimations();
- 
 });
 </script>
 

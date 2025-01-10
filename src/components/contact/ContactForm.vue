@@ -7,10 +7,8 @@ const fromFields = ["Name", "Email"];
 <!-- BODY & STRUCTURE -->
 <template>
   <form class="form-box">
-    <div class="head-box">
-    <h2 class="send-head">Send a Message</h2>
     <ContactList/>
-  </div>
+
     <div class="name-mail-box">
       <div class="form-group" v-for="f in fromFields">
         <label class="lbl-detail" :for="f.toLocaleLowerCase()"
@@ -55,7 +53,7 @@ const fromFields = ["Name", "Email"];
 
   
 }
-.head-box,.name-mail-box {
+.name-mail-box {
   height: 25%;
   width: 100%;
   display: flex;
@@ -63,11 +61,7 @@ const fromFields = ["Name", "Email"];
   align-items: center;
   justify-content: space-evenly;
 }
-.head-box{
-  flex-direction: column;
-  height: 20%;
-  gap: 5px;
-}
+
 
 .form-group-msg {
   width: 100%;

@@ -26,4 +26,14 @@ export const sectionsInfo: SectionInfo[] = [
   },
 ];
 
+const targets = [".title",".skill-card",".education-card",".cert-card"]
 
+export const targetElements = (section:Element)=>{
+
+    const targetElements = [] as Element[];
+    targets.forEach(t =>{
+        targetElements.push(section.querySelector(t)!)
+    });
+
+    return targetElements;
+};

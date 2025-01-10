@@ -10,7 +10,7 @@ import Certifications from "./components/certifications/Certifications.vue";
 import Contact from "./components/contact/Contact.vue";
 import anime from "animejs";
 import { onMounted, onBeforeMount, ref } from "vue";
-import { sectionsInfo } from "./data/dataAnimations";
+import { sectionsInfo, targetElements } from "./data/dataAnimations";
 
 const animations = [] as anime.AnimeInstance[];
 const prevSectionRect = ref(new DOMRect());
@@ -91,12 +91,9 @@ const handleScroll = () => {
     ) {
       animations.forEach((animation) => {
         const targetElement = animation.animatables[0].target;
-
+        const targets = targetElements(section);
         if (
-          targetElement === section.querySelector(".title") ||
-          targetElement === section.querySelector(".skill-card") ||
-          targetElement === section.querySelector(".education-card") ||
-          targetElement === section.querySelector(".cert-card")
+           targets.includes(targetElement)
         ) {
           //Check to see if the animation has played already or not (Don't want to loop the animation)
           if (!animation.completed && isSectionVisible) {

@@ -185,8 +185,9 @@ onMounted(() => {
   --color-lg: #e8e8e8;
   --color-dg: rgb(25, 25, 25);
   --color-mg: rgb(146, 146, 146);
+  --color-accent-g: rgba(34, 168, 32, 0.13);
+  --color-accent-gl: rgba(34, 168, 32, 0.523);
 
-  /* --card-shadow: rgba(0, 0, 0, 0.25) 7px 7px 19px 4px; */
   --card-shadow: var(--color-dg) 1px 1px 10px 1px;
   --btn-shadow: rgba(0, 0, 0, 0.25) 0 4px 8px;
 
@@ -199,7 +200,6 @@ onMounted(() => {
   box-sizing: border-box;
   font-family: "Lexend", serif;
   font-weight: 300;
-  font-style: normal;
   height: 100%;
 }
 .center-col {
@@ -233,7 +233,7 @@ onMounted(() => {
 .card-hover {
   &:hover {
     cursor: pointer;
-    transform: translateY(-5px);
+    transform: translateY(-10px);
     box-shadow: var(--color-accent) 1px 1px 10px 3px;
   }
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;

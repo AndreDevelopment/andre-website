@@ -1,7 +1,7 @@
 <!-- SCRIPTING & FUNCTIONS -->
 <script setup lang="ts">
 import type { WorkInformation } from "../../data/dataWorkExperience";
-
+import { keyWords } from "../../data/dataWorkExperience";
 const props = defineProps({
   work: {
     type: Object as () => WorkInformation,
@@ -12,6 +12,17 @@ const props = defineProps({
     required: true,
   },
 });
+
+const getStyledSentence = (sentence:string,fontWeight:number)=> {
+      for (const keyword of keyWords) {
+        const escapedKeyword = keyword.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&'); 
+        sentence = sentence.replace(
+          new RegExp(`\\b${escapedKeyword}\\b`, "gi"),
+          `<span style="font-weight: ${fontWeight}; ">${keyword}</span>`
+        );
+      }
+      return sentence;
+    }
 </script>
 <!-- BODY & STRUCTURE -->
 <template>
@@ -21,7 +32,12 @@ const props = defineProps({
       {{ props.work.company }} | {{ props.work.duration }}
     </p>
     <ul class="duties-list">
-      <li class="duty fit-content" v-for="d in props.work.duties">{{ d }}</li>
+      <li
+        class="duty fit-content"
+        v-for="d,index in props.work.duties"
+        :key="index"
+        v-html="getStyledSentence(d,700)"
+      ></li>
     </ul>
   </div>
 </template>

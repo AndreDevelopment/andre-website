@@ -6,7 +6,7 @@ const fromFields = ["Name", "Email"];
 </script>
 <!-- BODY & STRUCTURE -->
 <template>
-  <form class="form-box card-hover center-col">
+  <form class="form-box center-col">
     <ContactList />
 
     <div class="name-mail-box">
@@ -17,9 +17,10 @@ const fromFields = ["Name", "Email"];
         >
         <input
           class="txt-detail"
-          type="text"
+          :type="f==='Name' ?'text':'email'"
           :id="f.toLocaleLowerCase()"
           :name="f.toLocaleLowerCase()"
+          :disabled="true"
           required
         />
       </div>
@@ -29,10 +30,10 @@ const fromFields = ["Name", "Email"];
         <label for="message" class="lbl-msg fit-content"
           ><i class="pi pi-pen-to-square"></i> Message</label
         >
-        <textarea id="message" name="message" rows="5" required></textarea>
+        <textarea id="message" name="message" rows="5" required :disabled="true"></textarea>
       </div>
     </div>
-    <button class="btn btn-submit">
+    <button class="btn" id="btn-submit">
       Send Message <i class="send-icon pi pi-send"></i>
     </button>
   </form>
@@ -42,10 +43,11 @@ const fromFields = ["Name", "Email"];
 .form-box {
   color: var(--color-light);
   border-radius: var(--radius-card);
-  gap: 10px;
+  font-size: larger;
   background: linear-gradient(to bottom, var(--color-dg), var(--color-dark));
-  height: 100%;
+  height: 80%;
   width: 50%;
+
 }
 .name-mail-box {
   height: 25%;
@@ -58,7 +60,7 @@ const fromFields = ["Name", "Email"];
 
 .form-group-msg {
   width: 100%;
-  height: 40%;
+  height: 30%;
   gap: 5px;
 }
 .center-msg {
@@ -77,6 +79,7 @@ const fromFields = ["Name", "Email"];
 
 .lbl-msg,
 .lbl-detail {
+  font-size: medium;
   color: var(--color-light);
 }
 .lbl-msg {
@@ -87,21 +90,24 @@ const fromFields = ["Name", "Email"];
 #message {
   border: none;
   color: var(--color-light);
-  background-color: var(--color-dg);
+  background-color: var(--color-glass);
   border-radius: var(--radius-card);
 }
 
 #message {
   width: 100%;
+  padding: 1em;
 }
 .txt-detail {
+  padding-left: 1em;
   width: 100%;
   height: 30%;
 }
-.send-head {
-  margin-top: 1em;
-}
-.btn-submit {
+
+#btn-submit {
+
+  margin-top: 2em;
   padding: 1%;
+  font-size: medium;
 }
 </style>

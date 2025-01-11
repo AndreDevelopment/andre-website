@@ -13,15 +13,16 @@ const props = defineProps({
   },
 });
 
-const boldKeywords = (sentence: string) => {
-  for (const keyword of keyWords) {
-    sentence = sentence.replace(
-      new RegExp(`\\b${keyword}\\b`, "gi"),
-      `<b>${keyword}</b>`
-    );
-  }
-  return sentence;
-};
+const getStyledSentence = (sentence:string,fontWeight:number)=> {
+      for (const keyword of keyWords) {
+        const escapedKeyword = keyword.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&'); 
+        sentence = sentence.replace(
+          new RegExp(`\\b${escapedKeyword}\\b`, "gi"),
+          `<span style="font-weight: ${fontWeight}; ">${keyword}</span>`
+        );
+      }
+      return sentence;
+    }
 </script>
 <!-- BODY & STRUCTURE -->
 <template>
@@ -31,7 +32,12 @@ const boldKeywords = (sentence: string) => {
       {{ props.work.company }} | {{ props.work.duration }}
     </p>
     <ul class="duties-list">
-      <li class="duty fit-content" v-for="d in props.work.duties">{{ d }}</li>
+      <li
+        class="duty fit-content"
+        v-for="d,index in props.work.duties"
+        :key="index"
+        v-html="getStyledSentence(d,700)"
+      ></li>
     </ul>
   </div>
 </template>

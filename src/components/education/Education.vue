@@ -15,4 +15,8 @@ import Timeline from './Timeline.vue';
 </template>
 <!-- STYLING -->
 <style >
+
+#education-wrapper{
+    gap: 2px;
+}
 </style>

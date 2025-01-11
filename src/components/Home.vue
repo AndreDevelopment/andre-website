@@ -2,10 +2,13 @@
 <script setup lang="ts">
 import ContactList from "./contact/ContactList.vue";
 import resume from "../assets/AndreDSouzaResume_2025.pdf";
+import { onMounted, ref } from "vue";
 
 interface CustomScrollIntoViewOptions extends ScrollIntoViewOptions {
   top?: number;
 }
+const currentIndex = ref(0);
+const roles = ["Backend Engineer", "Frontend Developer", "System Designer"];
 const scrollNextSection = () => {
   const element = document.getElementById("work-experience");
 
@@ -38,29 +41,43 @@ const downloadResume = async () => {
     console.error("Error downloading PDF:", error);
   }
 };
+onMounted(() => {
+  setInterval(() => {
+    currentIndex.value = (currentIndex.value + 1) % roles.length;
+  }, 3000); 
+});
 </script>
 <!-- BODY & STRUCTURE -->
 <template>
   <div class="section" id="home">
     <div class="main"></div>
-    <div class="intro-box fit-content">
+    <div class="intro-box fit-content center-col">
       <p class="hello">Hello I'm</p>
-      <section class="animation">
-        <div class="me-item" id="andre"><div>Andre D'Souza</div></div>
-        <div class="me-item"><div>A Software Dev</div></div>
-        <div class="me-item"><div>A Web Developer</div></div>
-      </section>
+      <div class="full-name">
+        <h1 class="myname fit-content" id="first-name">Andre</h1>
+        <h1 class="myname fit-content" id="last-name">D'Souza</h1>
+      </div>
+    </div>
+    <div class="my-roles">
+      <div class="role-box">
+        <p
+          :class="['role', { 'role-show': currentIndex === index }]"
+          v-for="(r, index) in roles"
+        >
+          {{ r }}
+        </p>
+      </div>
     </div>
     <div class="btn-group-box">
       <div class="contact-wrap fit-content">
-      <ContactList />
-    </div>
+        <ContactList />
+      </div>
       <button class="btn btn-resume" @click="downloadResume()">
         Download my Resume <i class="pi pi-download"></i>
       </button>
     </div>
 
-    <button id="btn-next" @click="scrollNextSection()">
+    <button id="btn-next" class="fit-content" @click="scrollNextSection()">
       <i class="pi pi-angle-double-down"></i>
     </button>
   </div>
@@ -68,72 +85,112 @@ const downloadResume = async () => {
 <!-- STYLING -->
 <style>
 #home {
-
+  justify-content: center;
   background-color: var(--color-dark);
-  font-size: 2.26rem;
   text-transform: uppercase;
-
 }
-.contact-wrap{
-  margin: auto;
+.contact-wrap {
+  align-self: center;
 }
 .btn-group-box {
+  font-size: 1.4em;
   height: 30%;
-  width: 40%;
-  scale: 0.7;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-content: center;
   justify-content: center;
   gap: 10px;
 }
-#andre > div {
-  background-color: var(--color-accent);
-}
+
 .hello {
-  height: 2.26rem;
+  height: fit-content;
+  font-size: 1.5em;
+  color: var(--color-mg);
+}
+.full-name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+}
+.myname {
+  position: relative;
+  font-size: 7em;
+  font-weight: 700;
+  color: var(--color-accent);
+  animation: fadeInUp 1s ease-in-out;
+}
+
+#last-name {
   color: var(--color-light);
 }
 
-.me-item {
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.my-roles {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.role-box {
+  position: relative;
+  height: 80%;
+  width: 45%;
+}
+
+.role {
+
+  padding:2% ;
+  border-radius: 10px;
+  font-size: 1.5em;
   width: fit-content;
-
-}
-.animation {
-  height: 50px;
-  overflow: hidden;
-  margin-left: 1rem;
-}
-
-.animation > div > div {
-  padding: 0.25rem 0.75rem;
-  height: 2.81rem;
-  display: inline-block;
-}
-
-.animation div:first-child {
-  animation: text-animation 8s infinite ease-in-out;
-}
-
-.me-item div {
-  background-color: var(--color-light);
-  color: var(--color-dark);
+  height: fit-content;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
   text-align: center;
+  top: 0;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: all 0.7s ease-in-out;
 }
+
+.role-show {
+  color: var(--color-light);
+  background: linear-gradient( to bottom right, var(--color-dg), var(--color-dark)); 
+  transform: translateY(0);
+  opacity: 1;
+
+}
+
 .intro-box {
-  transform: scale(1.3);
-  margin-top: 15%;
+  margin-top: 9%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 100%;
 }
 #btn-next {
   position: relative;
-  --btn-next-sz: 40px;
-  font-size: 0.7em;
+
+  font-size: 1.4em;
   color: var(--color-accent);
-  height: var(--btn-next-sz);
-  width: var(--btn-next-sz);
+
   margin-top: auto;
   background-color: transparent;
   border: none;
@@ -144,9 +201,8 @@ const downloadResume = async () => {
 }
 
 .btn-resume {
-  margin: auto;
-  padding: 3%;
-
+  padding: 1em;
+  align-self: center;
 }
 
 @keyframes smoothBounce {
@@ -164,33 +220,6 @@ const downloadResume = async () => {
   }
   100% {
     transform: translateY(0);
-  }
-}
-
-@keyframes text-animation {
-  0% {
-    margin-top: 0rem;
-  }
-  14.3% {
-    margin-top: 0rem;
-  }
-  28.6% {
-    margin-top: -2.84rem;
-  }
-  42.9% {
-    margin-top: -2.84rem;
-  }
-  57.2% {
-    margin-top: -5.7rem;
-  }
-  71.5% {
-    margin-top: -5.7rem;
-  }
-  86% {
-    margin-top: 0rem;
-  }
-  100% {
-    margin-top: 0rem;
   }
 }
 

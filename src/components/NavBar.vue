@@ -1,167 +1,132 @@
-<!-- SCRIPTING & FUNCTIONS -->
 <script setup lang="ts">
-import { ref } from "vue";
-import { onMounted, onUnmounted } from "vue";
-import ContactList from "./contact/ContactList.vue";
+import { onBeforeUnmount, onMounted, ref } from "vue";
+import { sections } from "../data/content";
 
-interface CustomScrollIntoViewOptions extends ScrollIntoViewOptions {
-  top?: number;
-}
-const navItems = [
-  "Home",
-  "Work Experience",
-  "Education",
-  "Projects",
-  "Skills",
-  "Certifications",
-  "Contact",
-];
-const activeSection = ref("home");
-const scrollOffset = -80;
+const active = ref("home");
+const progress = ref(0);
+const open = ref(false);
+let io: IntersectionObserver;
+
+const onScroll = () => {
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  progress.value = max > 0 ? window.scrollY / max : 0;
+};
 
 onMounted(() => {
-  window.addEventListener("scroll", handleScroll);
+  // Section whose band crosses the middle of the viewport is "active"
+  io = new IntersectionObserver(
+    (entries) => entries.forEach((e) => e.isIntersecting && (active.value = e.target.id)),
+    { rootMargin: "-45% 0px -50% 0px" }
+  );
+  sections.forEach((s) => { const el = document.getElementById(s.id); if (el) io.observe(el); });
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 });
+onBeforeUnmount(() => { io?.disconnect(); window.removeEventListener("scroll", onScroll); });
 
-onUnmounted(() => {
-  window.removeEventListener("scroll", handleScroll);
-});
-
-const convertSectionId = (sectionId: string) => {
-  return sectionId.replace(/\s+/g, "-").toLowerCase();
-};
-const scrollTo = (sectionId: string) => {
-  sectionId = convertSectionId(sectionId);
-  const element = document.getElementById(sectionId);
-
-  if (element) {
-    const y =
-      element.getBoundingClientRect().top + window.scrollY + scrollOffset;
-    window.scrollTo({
-      behavior: "smooth",
-      top: y,
-    } as CustomScrollIntoViewOptions);
-  }
-};
-
-const handleScroll = () => {
-  const scrollOffset = 180;
-  const sections = document.querySelectorAll("div.section");
-  sections.forEach((section) => {
-    const rect = section.getBoundingClientRect();
-    if (
-      rect.top + scrollOffset < window.innerHeight &&
-      rect.bottom + scrollOffset > 0
-    ) {
-      activeSection.value = section.id;
-    }
-  });
-};
-
-const isSectionActive = (sectionId: string) => {
-  sectionId = convertSectionId(sectionId);
-  return activeSection.value === sectionId;
+const go = (id: string) => {
+  open.value = false;
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
 };
 </script>
-<!-- BODY & STRUCTURE -->
+
 <template>
-  <div id="nav-bar-box">
-    <div class="nav-zones" id="left-nav">
-      <ContactList />
-    </div>
-    <div class="nav-zones" id="right-nav">
-      <ul id="nav-list">
-        <li
-          v-for="n in navItems"
-          :class="['nav-item', { active: isSectionActive(n) }]"
-          @click="scrollTo(n)"
+  <header class="nav">
+    <div class="bar" :style="{ transform: `scaleX(${progress})` }"></div>
+    <div class="inner">
+      <a href="#home" class="brand" @click.prevent="go('home')">
+        <span class="reactor"></span>
+        <span>A<b>.</b>DSOUZA</span>
+      </a>
+      <nav :class="{ open }" aria-label="Primary">
+        <a
+          v-for="s in sections.slice(1)"
+          :key="s.id"
+          :href="`#${s.id}`"
+          :class="{ on: active === s.id }"
+          @click.prevent="go(s.id)"
+          >{{ s.label }}</a
         >
-          {{ n }}
-        </li>
-      </ul>
+      </nav>
+      <button class="burger" :aria-expanded="open" aria-label="Toggle menu" @click="open = !open">
+        <span></span><span></span>
+      </button>
     </div>
-  </div>
+  </header>
+
+  <!-- side section tracker -->
+  <aside class="dots" aria-hidden="true">
+    <button
+      v-for="s in sections"
+      :key="s.id"
+      :class="{ on: active === s.id }"
+      :title="s.label"
+      tabindex="-1"
+      @click="go(s.id)"
+    ></button>
+  </aside>
 </template>
-<!-- STYLING -->
-<style>
-#nav-bar-box {
-  position: fixed;
-  z-index: 10;
-  top: 0;
-  width: 100%;
-  height: 5em;
-  /* background: linear-gradient(to bottom, var(--color-dark), transparent); */
-  background-color: var(--color-dark);
 
-  display: flex;
-  justify-content: flex-end;
-  z-index: 3;
+<style scoped>
+.nav {
+  position: fixed; top: 0; inset-inline: 0; height: var(--nav-h); z-index: 50;
+  background: linear-gradient(to bottom, rgba(4, 8, 15, .88), rgba(4, 8, 15, .55));
+  backdrop-filter: blur(14px); border-bottom: 1px solid var(--line);
 }
-#nav-list {
-  color: white;
-  display: flex;
-  flex-direction: row;
-  list-style: none;
-  gap: 2em;
-  align-items: center;
-  padding: 2em;
+.bar {
+  position: absolute; left: 0; bottom: -1px; height: 2px; width: 100%;
+  background: linear-gradient(90deg, transparent, var(--cyan)); transform-origin: left;
+  box-shadow: 0 0 12px var(--cyan);
 }
-.nav-item {
-  height: 2em;
-  position: relative;
-  display: block;
-  &:hover {
-    cursor: pointer;
+.inner {
+  height: 100%; width: min(1120px, 100% - 3rem); margin-inline: auto;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.brand { display: flex; align-items: center; gap: .8rem; font-family: var(--heading); font-weight: 700; letter-spacing: .2em; font-size: .85rem; }
+.brand b { color: var(--cyan); }
+.reactor {
+  width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--cyan);
+  box-shadow: 0 0 14px var(--cyan), inset 0 0 8px var(--cyan); position: relative;
+  animation: pulse 3s ease-in-out infinite;
+}
+.reactor::after { content: ""; position: absolute; inset: 5px; border-radius: 50%; background: var(--cyan); }
+@keyframes pulse { 50% { box-shadow: 0 0 22px var(--cyan), inset 0 0 12px var(--cyan); } }
+
+nav { display: flex; gap: 2rem; }
+nav a {
+  font-family: var(--heading); font-size: .72rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--muted); position: relative; padding: .4rem 0; transition: color .3s;
+}
+nav a::after {
+  content: ""; position: absolute; left: 0; bottom: 0; height: 1px; width: 100%;
+  background: var(--cyan); transform: scaleX(0); transform-origin: right; transition: transform .45s var(--ease);
+}
+nav a:hover, nav a.on { color: var(--text); }
+nav a:hover::after, nav a.on::after { transform: scaleX(1); transform-origin: left; }
+
+.burger { display: none; background: none; border: 0; width: 40px; height: 40px; cursor: pointer; position: relative; }
+.burger span { position: absolute; left: 9px; right: 9px; height: 2px; background: var(--text); transition: transform .4s var(--ease); }
+.burger span:first-child { top: 15px; } .burger span:last-child { top: 23px; }
+.burger[aria-expanded="true"] span:first-child { transform: translateY(4px) rotate(45deg); }
+.burger[aria-expanded="true"] span:last-child { transform: translateY(-4px) rotate(-45deg); }
+
+.dots { position: fixed; right: 1.4rem; top: 50%; transform: translateY(-50%); z-index: 40; display: flex; flex-direction: column; gap: 14px; }
+.dots button {
+  width: 8px; height: 8px; padding: 0; border-radius: 50%; border: 1px solid var(--line-strong);
+  background: transparent; cursor: pointer; transition: all .4s var(--ease);
+}
+.dots button:hover { border-color: var(--cyan); }
+.dots button.on { background: var(--cyan); box-shadow: 0 0 12px var(--cyan); transform: scale(1.5); }
+
+@media (max-width: 860px) {
+  .burger { display: block; }
+  nav {
+    position: absolute; top: var(--nav-h); inset-inline: 0; flex-direction: column; gap: 0;
+    background: rgba(4, 8, 15, .97); border-bottom: 1px solid var(--line);
+    max-height: 0; overflow: hidden; transition: max-height .5s var(--ease);
   }
-}
-
-.nav-item::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 0.1em;
-  background-color: var(--color-accent);
-  opacity: 0;
-  transition: opacity 300ms, transform 300ms;
-}
-.nav-item:hover::after,
-.nav-item:focus::after {
-  opacity: 1;
-  transform: translate3d(0, 0.2em, 0);
-}
-
-.nav-item::after {
-  opacity: 1;
-  transform: scale(0);
-  transform-origin: center;
-}
-
-.nav-item:hover::after,
-.nav-item:focus::after {
-  transform: scale(1);
-}
-
-.active::after {
-  transform: scale(1);
-}
-
-#right-nav {
-  width: 60%;
-  justify-self: flex-start;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-}
-
-#left-nav {
-  padding-left: 2em;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  width: 40%;
+  nav.open { max-height: 420px; }
+  nav a { padding: 1.1rem 1.5rem; }
+  .dots { display: none; }
 }
 </style>

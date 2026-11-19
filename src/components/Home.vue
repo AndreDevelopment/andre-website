@@ -191,7 +191,7 @@ onMounted(() => {
   font-size: 1.4em;
   color: var(--color-accent);
 
-  margin-top: auto;
+  margin: 0 0 1em 0;
   background-color: transparent;
   border: none;
   animation: smoothBounce 2s infinite;

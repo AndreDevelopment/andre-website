@@ -186,15 +186,15 @@ onMounted(() => {
   --color-dg: rgb(25, 25, 25);
   --color-mg: rgb(146, 146, 146);
   --color-accent-g: rgba(34, 168, 32, 0.13);
-  --color-accent-gl: rgba(34, 168, 32, 0.523);
 
   --card-shadow: var(--color-dg) 1px 1px 10px 1px;
-  --btn-shadow: rgba(0, 0, 0, 0.25) 0 4px 8px;
 
   --radius-card: 10px;
+  width: 100%;
 }
 
 * {
+  
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -240,6 +240,7 @@ onMounted(() => {
 }
 
 .wrapper {
+  
   position: relative;
   height: 80%;
   width: 100%;
@@ -250,7 +251,8 @@ onMounted(() => {
 }
 
 .section {
-  min-height: 100vh;
+  height: 100vh;
+
   padding-top: 1em;
   background-color: var(--color-dark);
   display: flex;
@@ -311,4 +313,6 @@ onMounted(() => {
     transition: all 0.4s ease;
   }
 }
+
+
 </style>

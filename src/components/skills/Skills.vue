@@ -15,12 +15,21 @@ import SkillsCard from './SkillsCard.vue';
 <!-- STYLING -->
 <style >
 .skills-box{
-    height: 400px;
+    max-height: 400px;
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
 
+}
+
+@media (max-width: 767px) {
+    .skills-box{
+
+    flex-direction: column;
+
+
+}
 }
 </style>

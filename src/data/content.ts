@@ -4,6 +4,7 @@ import talkif from "../assets/talkifAIScreen.png";
 import shipStack from "../assets/ShipStack.png";
 import secureBank from "../assets/secureBank.png";
 import stockWatch from "../assets/stockWatch.png";
+import studyBuddy from "../assets/StudyBuddy.png";
 
 export const profile = {
   name: "Andre D'Souza",
@@ -11,55 +12,63 @@ export const profile = {
   email: "andredsouza15@gmail.com",
   linkedin: "https://www.linkedin.com/in/andre-j-d-souza",
   github: "https://github.com/AndreDevelopment",
-  resume: "/Andre_DSouza_Resume.pdf",
+  resume: "/AndreDSouza_Resume_2026.pdf",
 };
 
 export const skills = [
   { name: "Languages", items: ["Python", "Java", "JavaScript", "TypeScript", "PHP", "C", "C#"] },
   { name: "Frameworks", items: ["React", "Node.js", "Vue", "Spring Boot", "SignalR", "Selenium", "Laravel"] },
-  { name: "Developer Tools", items: ["VS Code", "Git", "GitHub", "Docker", "Postman", "IntelliJ"] },
+  { name: "Developer Tools", items: ["VS Code", "Git", "GitHub", "Docker", "Postman", "IntelliJ" , 'Claude Code'] },
   { name: "Databases", items: ["MongoDB", "Firebase", "MySQL", "Postgres"] },
   { name: "Soft Skills", items: ["Communication", "Teamwork", "Problem-solving", "Time Management", "Detail Oriented", "Organized"] },
 ];
 
 export const work = [
   {
-    title: "Junior (MES) Developer",
+    title: "Junior Full-Stack Developer",
     company: "DBG Canada",
     duration: "May 2024 – Present",
     duties: [
-      "Plan, develop, and implement crucial modules for production monitoring within the Manufacturing Execution System for Canada, while also supporting development requests from the US.",
-      "Provide real-time technical support to operations personnel in Canada, US, and Mexico, ensuring timely resolution of all issues.",
-      "Develop comprehensive user guides and establish a centralized knowledge base for troubleshooting technical issues across all manufacturing operations.",
-      "Lead Steering Committee meetings, report on knowledge base status and module differences, and prioritize feature development through an open issues tracker while facilitating cross-functional teamwork.",
-      "Provide interactive training to operations personnel on newly developed modules.",
-      "Travel to the US and Mexico for training and collaboration with software developers.",
+      "Develop, test, and ship full-stack web features across internal administrative platforms and customer-facing reporting tools, owning tasks from technical scoping through production deployment.",
+      "Investigate, debug, and resolve complex production issues reported by operational teams and end-users, maintaining high system reliability across multi-facility environments.",
+      "Architect and optimize relational database schemas and SQL queries (MySQL/PostgreSQL) to support data-intensive reporting workflows and improve application response times.",
+      "Enforce code quality and maintainability through rigorous unit testing, peer code reviews, technical documentation, and adherence to secure coding standards for sensitive enterprise data.",
+      "Partner directly with cross-functional stakeholders to translate ambiguous business requirements into clean, well-scoped technical specifications.",
     ],
   },
-  {
-    title: "Support Services Assistant",
-    company: "Unity Health Providence",
-    duration: "July 2021 – August 2021",
-    duties: [
-      "Transported patients via stretcher to x-ray or echocardiogram appointments.",
-      "Cleaned medical equipment and ensured that all devices were fully functional.",
-      "Delivered supplies to all medical units in the hospital and long-term care residences.",
-    ],
-  },
-  {
-    title: "Student Trainee",
-    company: "Toronto Police Service",
-    duration: "July 2018 – August 2018",
-    duties: [
-      "Assisted mechanics in Fleet Services with prepping new police vehicles for service: installing bumpers, lights, and sirens, washing vehicles and removing signage.",
-      "Conducted activities for children attending the Blue Jays Rookie League summer camps at various locations across the city.",
-      "Attended tours of police units including the K9 unit, marine unit, and forensics.",
-      "Participated in the Toronto Police Service float at Caribana 2018.",
-    ],
-  },
+  // {
+  //   title: "Support Services Assistant",
+  //   company: "Unity Health Providence",
+  //   duration: "July 2021 – August 2021",
+  //   duties: [
+  //     "Transported patients via stretcher to x-ray or echocardiogram appointments.",
+  //     "Cleaned medical equipment and ensured that all devices were fully functional.",
+  //     "Delivered supplies to all medical units in the hospital and long-term care residences.",
+  //   ],
+  // },
+  // {
+  //   title: "Student Trainee",
+  //   company: "Toronto Police Service",
+  //   duration: "July 2018 – August 2018",
+  //   duties: [
+  //     "Assisted mechanics in Fleet Services with prepping new police vehicles for service: installing bumpers, lights, and sirens, washing vehicles and removing signage.",
+  //     "Conducted activities for children attending the Blue Jays Rookie League summer camps at various locations across the city.",
+  //     "Attended tours of police units including the K9 unit, marine unit, and forensics.",
+  //     "Participated in the Toronto Police Service float at Caribana 2018.",
+  //   ],
+  // },
 ];
 
 export const projects = [
+  {
+    name: "Study Buddy",
+    duration: "Sep 2026",
+    description:
+      "Developing a Retrieval-Augmented Generation (RAG) pipeline to index and query large-scale academic datasets, significantly reducing study time for complex technical topics.",
+    image: studyBuddy,
+    stack: ["Python", "Vue", "FastAPI", "Claude Code"],
+    url: "https://github.com/AndreDevelopment/study-buddy",
+  },
   {
     name: "TalkifAI",
     duration: "Sep 2023 – Apr 2024",

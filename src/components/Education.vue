@@ -38,5 +38,6 @@ h3 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; letter-spacing: -.03
 .school { color: var(--muted); font-size: .9rem; }
 .label { font-family: var(--heading); font-size: .7rem; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); margin: 1.8rem 0 .8rem; }
 ul { display: flex; flex-wrap: wrap; gap: .5rem; }
+@media (max-width: 480px) { .card { padding: 1.3rem; } .logo img { width: 90px; height: 90px; } }
 @media (max-width: 680px) { .card { grid-template-columns: 1fr; gap: 1.5rem; padding: 1.6rem; } .logo { justify-content: flex-start; } }
 </style>

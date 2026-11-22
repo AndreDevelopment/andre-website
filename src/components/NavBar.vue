@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from "vue";
 import { sections } from "../data/content";
+import { scrollToSection } from "../scrollTo";
 
 const active = ref("home");
 const progress = ref(0);
@@ -26,7 +27,7 @@ onBeforeUnmount(() => { io?.disconnect(); window.removeEventListener("scroll", o
 
 const go = (id: string) => {
   open.value = false;
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  scrollToSection(id);
 };
 </script>
 
@@ -82,7 +83,7 @@ const go = (id: string) => {
   height: 100%; width: min(1120px, 100% - 3rem); margin-inline: auto;
   display: flex; align-items: center; justify-content: space-between;
 }
-.brand { display: flex; align-items: center; gap: .8rem; font-family: var(--heading); font-weight: 700; letter-spacing: .2em; font-size: .85rem; }
+.brand { white-space: nowrap; display: flex; align-items: center; gap: .8rem; font-family: var(--heading); font-weight: 700; letter-spacing: .2em; font-size: .85rem; }
 .brand b { color: var(--cyan); }
 .reactor {
   width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--cyan);
@@ -118,14 +119,15 @@ nav a:hover::after, nav a.on::after { transform: scaleX(1); transform-origin: le
 .dots button:hover { border-color: var(--cyan); }
 .dots button.on { background: var(--cyan); box-shadow: 0 0 12px var(--cyan); transform: scale(1.5); }
 
-@media (max-width: 860px) {
+@media (max-width: 1240px) { .dots { display: none; } }
+@media (max-width: 960px) {
   .burger { display: block; }
   nav {
     position: absolute; top: var(--nav-h); inset-inline: 0; flex-direction: column; gap: 0;
     background: rgba(4, 8, 15, .97); border-bottom: 1px solid var(--line);
     max-height: 0; overflow: hidden; transition: max-height .5s var(--ease);
   }
-  nav.open { max-height: 420px; }
+  nav.open { max-height: calc(100svh - var(--nav-h)); overflow-y: auto; }
   nav a { padding: 1.1rem 1.5rem; }
   .dots { display: none; }
 }

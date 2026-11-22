@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from "vue";
 import { profile } from "../data/content";
+import { scrollToSection } from "../scrollTo";
 
 // Typewriter that cycles through roles.
 const text = ref("");
@@ -24,7 +25,7 @@ onMounted(() => {
 });
 onBeforeUnmount(() => clearTimeout(timer));
 
-const next = () => document.getElementById("skills")?.scrollIntoView({ behavior: "smooth" });
+const next = () => scrollToSection("skills");
 </script>
 
 <template>
@@ -70,7 +71,7 @@ const next = () => document.getElementById("skills")?.scrollIntoView({ behavior:
 .status { font-family: var(--heading); font-size: .72rem; letter-spacing: .28em; text-transform: uppercase; color: var(--cyan); display: flex; align-items: center; gap: .8rem; animation: in 1s .1s both var(--ease); }
 .blip { width: 8px; height: 8px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 10px var(--cyan); animation: blink 2s infinite; }
 @keyframes blink { 50% { opacity: .25; } }
-h1 { font-size: clamp(3.6rem, 12vw, 9.5rem); font-weight: 800; letter-spacing: -.05em; line-height: .92; margin: 1.6rem 0 1.4rem; }
+h1 { font-size: clamp(2.6rem, 12vw, 9.5rem); font-weight: 800; letter-spacing: -.05em; line-height: .92; margin: 1.6rem 0 1.4rem; }
 .line { display: block; overflow: hidden; padding-bottom: .08em; }
 .line > span { display: inline-block; transform: translateY(110%); animation: rise 1.2s var(--ease) forwards; }
 .line:nth-child(2) > span { animation-delay: .15s; }
@@ -97,5 +98,7 @@ h1 i { color: var(--cyan); font-style: normal; text-shadow: 0 0 30px var(--cyan)
 .scroll i { width: 1px; height: 46px; background: linear-gradient(var(--cyan), transparent); animation: drop 2s var(--ease) infinite; transform-origin: top; }
 @keyframes drop { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform: scaleY(1); opacity: 0; } }
 .scroll:hover { color: var(--cyan); }
-@media (max-width: 760px) { .rings { opacity: .35; right: -30vw; } }
+@media (max-width: 760px) { .rings { opacity: .35; right: -30vw; } .hero { padding-bottom: 5rem; } }
+@media (max-width: 420px) { .cta .btn { flex: 1 1 100%; justify-content: center; } .status { letter-spacing: .2em; } }
+@media (max-height: 640px) { .scroll { display: none; } .hero { padding-bottom: 3rem; } }
 </style>

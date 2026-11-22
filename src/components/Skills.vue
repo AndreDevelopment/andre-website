@@ -24,8 +24,9 @@ import { skillIcons } from "../data/icons";
 </template>
 
 <style scoped>
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1.5rem; }
 .card { padding: 2rem; }
+@media (max-width: 480px) { .card { padding: 1.4rem; } }
 .card:hover { transform: translateY(-6px); }
 h3 { font-size: 1.05rem; font-weight: 700; letter-spacing: -.01em; margin-bottom: 1.4rem; display: flex; align-items: baseline; gap: .9rem; }
 h3 span { font-size: .7rem; color: var(--cyan); letter-spacing: .2em; }

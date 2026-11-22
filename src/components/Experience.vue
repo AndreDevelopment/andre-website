@@ -57,6 +57,8 @@ const open = ref(0);
 .body.open ul { padding-bottom: 1.8rem; }
 
 @media (max-width: 760px) {
+  .timeline { padding-left: 1.6rem; }
+  .node { left: -1.6rem; top: 1.9rem; }
   .head { grid-template-columns: 1fr 24px; }
   .when { grid-column: 1 / -1; }
   .role { grid-row: 2; }

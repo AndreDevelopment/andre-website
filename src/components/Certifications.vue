@@ -38,6 +38,7 @@ import { certifications } from "../data/content";
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); gap: 2rem; }
 .card { display: flex; flex-direction: column; padding: 2.2rem; }
 .card:hover { transform: translateY(-6px); }
+@media (max-width: 480px) { .card { padding: 1.4rem; } }
 .top { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-family: var(--heading); font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; }
 .issuer { color: var(--cyan); font-weight: 600; }
 .date { color: var(--muted); }

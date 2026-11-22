@@ -53,18 +53,19 @@ const untilt = (e: PointerEvent) => ((e.currentTarget as HTMLElement).style.tran
 </template>
 
 <style scoped>
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr)); gap: 2rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 1.5rem; }
 .card { display: block; height: 100%; overflow: hidden; transition: transform .25s ease-out, border-color .4s, box-shadow .5s; }
-.shot { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--bg-2); border-bottom: 1px solid var(--line); }
+.shot { position: relative; aspect-ratio: 2 / 1; overflow: hidden; background: var(--bg-2); border-bottom: 1px solid var(--line); }
 .shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 1.2s var(--ease), filter .6s; filter: saturate(.85) brightness(.85); }
 .card:hover img { transform: scale(1.06); filter: none; }
 .scan { position: absolute; left: 0; right: 0; height: 40%; top: -40%; background: linear-gradient(to bottom, transparent, rgba(0, 212, 255, .18), transparent); pointer-events: none; }
 .card:hover .scan { animation: sweep 1.4s var(--ease); }
 @keyframes sweep { to { top: 100%; } }
-.info { padding: 1.8rem 2rem 2rem; }
+.info { padding: 1.3rem 1.5rem 1.5rem; }
 .meta { display: flex; justify-content: space-between; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-family: var(--heading); }
 .go { color: var(--cyan); }
-h3 { font-size: 1.6rem; font-weight: 800; letter-spacing: -.03em; margin: .6rem 0 .7rem; }
-p { color: var(--muted); font-size: .9rem; margin-bottom: 1.3rem; }
+@media (max-width: 480px) { .info { padding: 1.3rem 1.2rem 1.5rem; } .meta { gap: .6rem; flex-wrap: wrap; } }
+h3 { font-size: 1.3rem; font-weight: 800; letter-spacing: -.03em; margin: .4rem 0 .5rem; }
+p { color: var(--muted); font-size: .85rem; line-height: 1.6; margin-bottom: 1rem; }
 ul { display: flex; flex-wrap: wrap; gap: .5rem; }
 </style>
